@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response, JSONResponse
 import pandas as pd
-from .upload import safe_read_sessions
+from routes.upload import safe_read_sessions
+from core.report import generate_pdf_report
 
 router = APIRouter()
 
@@ -50,5 +51,17 @@ async def export_sql(session_id: str):
     
 @router.get("/pdf/{session_id}")
 async def export_pdf(session_id: str):
-    # To be implemented by report.py integration (Step 35)
-    raise HTTPException(status_code=501, detail="PDF export via fpdf2 will be available after integrating report.py")
+    sessions = safe_read_sessions()
+    session = sessions.get(session_id)
+    if not session or not session.get("history"):
+        raise HTTPException(status_code=404, detail="No history found for session")
+        
+    pdf_bytes = generate_pdf_report(session)
+    if not pdf_bytes:
+        raise HTTPException(status_code=500, detail="Failed to generate PDF report")
+    
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": 'attachment; filename="datatalk_report.pdf"'}
+    )

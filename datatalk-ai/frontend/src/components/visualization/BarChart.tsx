@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Plot from 'react-plotly.js';
 
 interface BarChartProps {
@@ -7,11 +7,22 @@ interface BarChartProps {
     yCol: string;
 }
 
-export const BarChart: React.FC<BarChartProps> = ({ data, xCol, yCol }) => {
-    const xData = data.map(d => d[xCol]);
-    const yData = data.map(d => d[yCol]);
+const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f43f5e', '#f59e0b', '#10b981', '#14b8a6', '#6366f1', '#06b6d4', '#84cc16'];
 
-    const avg = yData.reduce((a, b) => a + (Number(b) || 0), 0) / (yData.length || 1);
+export const BarChart: React.FC<BarChartProps> = ({ data, xCol, yCol }: BarChartProps) => {
+    const xData = data.map((d: any) => d[xCol]);
+    const yData = data.map((d: any) => Number(d[yCol]) || 0);
+
+    const avg = yData.reduce((a: number, b: number) => a + b, 0) / (yData.length || 1);
+    const maxVal = Math.max(...yData);
+    const minVal = Math.min(...yData);
+
+    // Color-code: highest = red/warning, lowest = green/safe, rest = blue
+    const barColors = yData.map((v: number) => {
+        if (v === maxVal && yData.length > 1) return '#ef4444'; // Red for highest (risk)
+        if (v === minVal && yData.length > 1) return '#10b981'; // Green for lowest (safe)
+        return '#3b82f6'; // Default blue
+    });
 
     return (
         <div className="w-full h-80 animate-in fade-in zoom-in-95 duration-500">
@@ -22,27 +33,32 @@ export const BarChart: React.FC<BarChartProps> = ({ data, xCol, yCol }) => {
                         y: yData,
                         type: 'bar',
                         marker: {
-                            color: '#3b82f6',
-                            opacity: 0.8,
-                            line: { color: '#2563eb', width: 1.5 }
+                            color: barColors,
+                            opacity: 0.85,
+                            line: { color: barColors.map(c => c === '#3b82f6' ? '#2563eb' : c), width: 1.5 }
                         },
+                        text: yData.map(v => v.toLocaleString(undefined, { maximumFractionDigits: 1 })),
+                        textposition: 'outside',
+                        textfont: { size: 11, color: '#475569', family: 'Inter, sans-serif' },
                         name: yCol.replace(/_/g, ' '),
-                        hoverinfo: 'x+y'
+                        hovertemplate: `<b>%{x}</b><br>${yCol.replace(/_/g, ' ')}: %{y:,.2f}<extra></extra>`
                     }
                 ]}
                 layout={{
                     autosize: true,
-                    margin: { t: 20, r: 40, l: 60, b: 60 },
+                    margin: { t: 25, r: 50, l: 65, b: 70 },
                     plot_bgcolor: 'transparent',
                     paper_bgcolor: 'transparent',
                     xaxis: {
-                        title: xCol.replace(/_/g, ' '),
-                        tickangle: -45,
-                        gridcolor: '#f1f5f9'
+                        title: { text: xCol.replace(/_/g, ' '), font: { size: 12, color: '#64748b', family: 'Inter, sans-serif' } },
+                        tickangle: xData.length > 5 ? -45 : 0,
+                        gridcolor: '#f1f5f9',
+                        tickfont: { size: 11, color: '#475569', family: 'Inter, sans-serif' }
                     },
                     yaxis: {
-                        title: yCol.replace(/_/g, ' '),
-                        gridcolor: '#e2e8f0'
+                        title: { text: yCol.replace(/_/g, ' '), font: { size: 12, color: '#64748b', family: 'Inter, sans-serif' } },
+                        gridcolor: '#e2e8f0',
+                        tickfont: { size: 11, color: '#475569', family: 'Inter, sans-serif' }
                     },
                     shapes: [
                         {
@@ -53,7 +69,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data, xCol, yCol }) => {
                             y0: avg,
                             y1: avg,
                             yref: 'y',
-                            line: { color: '#ef4444', width: 2, dash: 'dash' }
+                            line: { color: '#94a3b8', width: 1.5, dash: 'dash' }
                         }
                     ],
                     annotations: [
@@ -66,9 +82,12 @@ export const BarChart: React.FC<BarChartProps> = ({ data, xCol, yCol }) => {
                             showarrow: false,
                             xanchor: 'left',
                             yanchor: 'middle',
-                            font: { color: '#ef4444', size: 11, family: 'Inter, sans-serif' }
+                            font: { color: '#94a3b8', size: 10, family: 'Inter, sans-serif' },
+                            bgcolor: 'rgba(148,163,184,0.08)',
+                            borderpad: 3
                         }
-                    ]
+                    ],
+                    bargap: 0.2
                 }}
                 useResizeHandler={true}
                 style={{ width: '100%', height: '100%' }}
