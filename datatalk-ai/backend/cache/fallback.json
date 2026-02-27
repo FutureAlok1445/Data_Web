@@ -1,0 +1,30 @@
+{
+    "mock_responses": [
+        {
+            "query": "Show me total sales by region",
+            "answer": "Looking at the processed dataset, the North America region lead overall sales strongly, contributing $1.5M compared to the $800K from Europe. This represents nearly a 2x multiple between the top two regions.",
+            "data": [
+                {
+                    "region": "North America",
+                    "sales": 1500000
+                },
+                {
+                    "region": "Europe",
+                    "sales": 800000
+                },
+                {
+                    "region": "Asia",
+                    "sales": 450000
+                }
+            ],
+            "sql": "SELECT region, SUM(sales) as sales FROM dataset GROUP BY region ORDER BY sales DESC;",
+            "executive_summary": {
+                "risk_level": "Low",
+                "key_finding": "North America aggressively dominates total revenue generation across the entire dataset.",
+                "recommended_action": "Allocate additional targeted marketing spend to Europe and Asia to close the vast geographic performance gap."
+            },
+            "anomalies": {},
+            "insights": []
+        }
+    ]
+}

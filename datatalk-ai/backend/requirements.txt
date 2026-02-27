@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+duckdb
+pandas
+scipy
+anthropic
+python-dotenv
+fpdf2
