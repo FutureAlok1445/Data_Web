@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+duckdb
+pandas
+scipy
+anthropic
+google-generativeai
+python-dotenv
+fpdf2
+plotly
+numpy
+kaleido

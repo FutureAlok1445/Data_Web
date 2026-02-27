@@ -1,0 +1,52 @@
+{
+    "churn rate by gender": {
+        "sql": "SELECT gender, CAST(SUM(CASE WHEN Churn='Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100.0 / COUNT(*) as churn_rate, COUNT(*) as total_customers FROM main_data GROUP BY gender ORDER BY churn_rate DESC",
+        "result": [
+            {
+                "gender": "Female",
+                "churn_rate": 26.91,
+                "total_customers": 3488
+            },
+            {
+                "gender": "Male",
+                "churn_rate": 26.16,
+                "total_customers": 3555
+            }
+        ]
+    },
+    "contract type churn": {
+        "sql": "SELECT Contract, CAST(SUM(CASE WHEN Churn='Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100.0 / COUNT(*) as churn_rate, COUNT(*) as total FROM main_data GROUP BY Contract ORDER BY churn_rate DESC",
+        "result": [
+            {
+                "Contract": "Month-to-month",
+                "churn_rate": 42.71,
+                "total": 3875
+            },
+            {
+                "Contract": "One year",
+                "churn_rate": 11.27,
+                "total": 1473
+            },
+            {
+                "Contract": "Two year",
+                "churn_rate": 2.83,
+                "total": 1695
+            }
+        ]
+    },
+    "average monthly charges churned": {
+        "sql": "SELECT Churn, ROUND(AVG(MonthlyCharges), 2) as avg_monthly_charges, COUNT(*) as total FROM main_data GROUP BY Churn",
+        "result": [
+            {
+                "Churn": "Yes",
+                "avg_monthly_charges": 74.44,
+                "total": 1869
+            },
+            {
+                "Churn": "No",
+                "avg_monthly_charges": 61.27,
+                "total": 5174
+            }
+        ]
+    }
+}
