@@ -1,73 +1,141 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException
 import os
 import uuid
 import json
-import shutil
-from ..core.ingestion import ingest_csv_to_duckdb
-from ..core.schema_analyzer import profile_schema, get_data_dictionary
+import tempfile
+from datetime import datetime
+from fastapi import APIRouter, UploadFile, File, HTTPException
+from pathlib import Path
+
+from core.ingestion import DataIngestion
+from core.schema_analyzer import SchemaAnalyzer
+from core.query_engine import QueryEngine
+from core.validator import QueryValidator
+from core.insight_discovery import InsightDiscovery
 
 router = APIRouter()
 
-STORAGE_DIR = os.path.join(os.path.dirname(__file__), '..', 'storage')
-UPLOADS_DIR = os.path.join(STORAGE_DIR, 'uploads')
-SESSIONS_FILE = os.path.join(STORAGE_DIR, 'sessions.json')
+UPLOAD_DIR = Path(__file__).parent.parent / "storage" / "uploads"
+SESSIONS_FILE = Path(__file__).parent.parent / "storage" / "sessions.json"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-os.makedirs(UPLOADS_DIR, exist_ok=True)
 
-def safe_read_sessions():
-    if os.path.exists(SESSIONS_FILE):
-        try:
-            with open(SESSIONS_FILE, 'r') as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            return {}
+def load_sessions() -> dict:
+    if SESSIONS_FILE.exists():
+        with open(SESSIONS_FILE) as f:
+            return json.load(f)
     return {}
 
-def safe_write_sessions(data):
-    with open(SESSIONS_FILE, 'w') as f:
-        json.dump(data, f, indent=4)
 
-@router.post("/")
-async def upload_dataset(file: UploadFile = File(...)):
-    if not file.filename.endswith('.csv'):
-        raise HTTPException(status_code=400, detail="Only CSV files are supported.")
-        
-    session_id = str(uuid.uuid4())
-    filename = f"{session_id}_{file.filename}"
-    file_path = os.path.join(UPLOADS_DIR, filename)
-    
-    try:
-        # Save file to disk
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-            
-        # Analyze schema immediately upon upload to store in session
-        conn, cleaned_columns = ingest_csv_to_duckdb(file_path)
-        schema = profile_schema(conn)
-        data_dict = get_data_dictionary(schema)
-        
-        # We don't need to keep DuckDB connection open for now
-        conn.close()
-        
-        # Save session info to JSON registry
-        sessions = safe_read_sessions()
-        sessions[session_id] = {
-            "session_id": session_id,
-            "original_filename": file.filename,
-            "file_path": file_path,
-            "schema": schema,
-            "data_dictionary": data_dict,
-            "history": []
+def save_sessions(sessions: dict):
+    SESSIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(SESSIONS_FILE, "w") as f:
+        json.dump(sessions, f, indent=2, default=str)
+
+
+# In-memory store for active sessions (DuckDB connections etc.)
+ACTIVE_SESSIONS = {}
+
+
+@router.post("/upload")
+async def upload_csv(file: UploadFile = File(...)):
+    if not file.filename.endswith(".csv"):
+        raise HTTPException(400, "Only CSV files are supported")
+
+    session_id = str(uuid.uuid4())[:8]
+
+    # Save raw file
+    save_path = UPLOAD_DIR / f"{session_id}_{file.filename}"
+    content = await file.read()
+    with open(save_path, "wb") as f:
+        f.write(content)
+
+    # Ingest into DuckDB
+    db = DataIngestion()
+    schema, shape = db.ingest_csv(str(save_path))
+
+    # Schema analysis + data dictionary
+    analyzer = SchemaAnalyzer(schema)
+    data_dict = analyzer.generate_data_dictionary()
+
+    # Target column detection
+    target_col = db.detect_target_column(schema)
+
+    # Impact scores
+    discovery = InsightDiscovery()
+    impact_scores = discovery.compute_impact_scores(db, schema, target_col)
+
+    # Sample questions
+    sample_questions = analyzer.generate_sample_questions(target_col)
+
+    # Build query engine + validator
+    qe = QueryEngine(db, analyzer)
+    validator = QueryValidator(db, qe, analyzer)
+
+    # Store in memory
+    ACTIVE_SESSIONS[session_id] = {
+        "db": db,
+        "analyzer": analyzer,
+        "query_engine": qe,
+        "validator": validator,
+    }
+
+    # Build session record
+    session_record = {
+        "session_id": session_id,
+        "filename": file.filename,
+        "saved_path": str(save_path),
+        "uploaded_at": datetime.now().isoformat(),
+        "shape": {"rows": shape[0], "columns": shape[1]},
+        "schema": schema,
+        "data_dictionary": data_dict,
+        "target_column": target_col,
+        "impact_scores": impact_scores,
+        "query_history": []
+    }
+
+    # Persist session
+    sessions = load_sessions()
+    sessions[session_id] = session_record
+    save_sessions(sessions)
+
+    return {
+        "session_id": session_id,
+        "filename": file.filename,
+        "rows": shape[0],
+        "columns": shape[1],
+        "schema": schema,
+        "data_dictionary": data_dict,
+        "target_column": target_col,
+        "impact_scores": impact_scores,
+        "sample_questions": sample_questions
+    }
+
+
+def get_active_session(session_id: str) -> dict:
+    if session_id not in ACTIVE_SESSIONS:
+        # Try to reload from disk
+        sessions = load_sessions()
+        if session_id not in sessions:
+            raise HTTPException(404, f"Session {session_id} not found. Please upload your CSV again.")
+
+        record = sessions[session_id]
+        saved_path = record.get("saved_path")
+        if not saved_path or not Path(saved_path).exists():
+            raise HTTPException(404, "CSV file no longer available. Please re-upload.")
+
+        # Restore session
+        db = DataIngestion()
+        schema, _ = db.ingest_csv(saved_path)
+        analyzer = SchemaAnalyzer(schema)
+        analyzer.data_dictionary = record.get("data_dictionary", {})
+        qe = QueryEngine(db, analyzer)
+        validator = QueryValidator(db, qe, analyzer)
+
+        ACTIVE_SESSIONS[session_id] = {
+            "db": db,
+            "analyzer": analyzer,
+            "query_engine": qe,
+            "validator": validator,
         }
-        safe_write_sessions(sessions)
-        
-        return {
-            "session_id": session_id, 
-            "message": "File uploaded and profiled successfully",
-            "schema": schema
-        }
-    except Exception as e:
-        # Cleanup on failure
-        if os.path.exists(file_path):
-            os.remove(file_path)
-        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
+
+    return ACTIVE_SESSIONS[session_id]

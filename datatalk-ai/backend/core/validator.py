@@ -1,88 +1,55 @@
-import duckdb
-from .query_engine import generate_sql
-import anthropic
-import os
+import json
 
-def execute_with_retry(
-    conn: duckdb.DuckDBPyConnection, 
-    user_query: str, 
-    schema: dict, 
-    data_dictionary: str, 
-    max_retries: int = 3,
-    table_name: str = "dataset"
-) -> dict:
-    """
-    Executes AI-generated SQL with a self-healing retry loop.
-    Returns the final SQL, the result data, and the audit trail.
-    """
-    audit_trail = []
-    
-    # 1. Initial generation
-    sql = generate_sql(user_query, schema, data_dictionary, table_name)
-    audit_trail.append({"step": "initial_generation", "sql": sql})
-    
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    client = anthropic.Anthropic(api_key=api_key) if api_key else None
-    
-    for attempt in range(max_retries):
-        try:
-            # 2. Try to execute
-            result_df = conn.execute(sql).fetchdf()
-            audit_trail.append({"step": f"execution_attempt_{attempt + 1}", "status": "success"})
+class QueryValidator:
+    def __init__(self, db, query_engine, analyzer, max_retries=3):
+        self.db = db
+        self.qe = query_engine
+        self.analyzer = analyzer
+        self.max_retries = max_retries
+
+    def execute_with_retry(self, question):
+        audit_trail = []
+        error = None
+        sql = None
+        result = None
+        
+        schema_context = f"Schema:\n{json.dumps(self.analyzer.schema, indent=2)}\n\nData Dictionary:\n{json.dumps(self.analyzer.data_dictionary, indent=2)}"
+        relevant_cols = list(self.analyzer.schema.keys())
+
+        attempt = 1
+        for attempt in range(1, self.max_retries + 1):
+            sql = self.qe.generate_sql(question, schema_context, previous_error=error, previous_sql=sql)
+            audit_trail.append({"step": f"Attempt {attempt}", "detail": f"Generated SQL: {sql}"})
             
-            return {
-                "success": True,
-                "sql": sql,
-                "data": result_df.to_dict(orient="records"),
-                "columns": result_df.columns.tolist(),
-                "audit_trail": audit_trail
-            }
-            
-        except Exception as e:
-            error_msg = str(e)
-            audit_trail.append({
-                "step": f"execution_attempt_{attempt + 1}", 
-                "status": "error", 
-                "error": error_msg
-            })
-            
-            if attempt == max_retries - 1:
+            if sql.strip() == "UNANSWERABLE":
+                error = "UNANSWERABLE"
                 break
                 
-            if not client:
-                # Cannot self-heal without AI if in mock mode
-                break
+            sql_lower = sql.lower().strip()
+            if not sql_lower.startswith("select"):
+                error = "Security Guard: Only SELECT queries are allowed."
+                audit_trail.append({"step": f"Attempt {attempt} Blocked", "detail": error})
+                continue
                 
-            # 3. Self-healing loop
-            try:
-                healing_prompt = (
-                    f"The following DuckDB SQL query failed:\n```sql\n{sql}\n```\n\n"
-                    f"Error Message: {error_msg}\n\n"
-                    f"Schema Reference: {schema}\n\n"
-                    "Please provide the corrected SQL query to fix this error. Return ONLY the valid DuckDB SQL."
-                )
-                response = client.messages.create(
-                    model="claude-3-5-sonnet-20241022",
-                    max_tokens=1000,
-                    system="You are an expert SQL debugging assistant. Fix the query and return ONLY the valid SQL.",
-                    messages=[{"role": "user", "content": healing_prompt}]
-                )
+            forbidden = ["drop ", "delete ", "insert ", "update ", "truncate ", "alter "]
+            if any(f in sql_lower for f in forbidden):
+                error = "Security Guard: Destructive operations are not allowed."
+                audit_trail.append({"step": f"Attempt {attempt} Blocked", "detail": error})
+                continue
                 
-                sql = response.content[0].text.strip()
-                if "```sql" in sql:
-                    sql = sql.split("```sql")[1].split("```")[0].strip()
-                elif "```" in sql:
-                    sql = sql.split("```")[1].split("```")[0].strip()
-                    
-                audit_trail.append({"step": f"self_heal_{attempt + 1}", "new_sql": sql})
-                
-            except Exception as heal_e:
-                audit_trail.append({"step": f"self_heal_error_{attempt + 1}", "error": str(heal_e)})
-                break
-                
-    return {
-        "success": False,
-        "sql": sql,
-        "error": "Max retries reached. Unable to fix query.",
-        "audit_trail": audit_trail
-    }
+            result, error = self.db.execute_query(sql)
+            if error:
+                audit_trail.append({"step": f"Attempt {attempt} Failed", "detail": error})
+                continue
+            
+            audit_trail.append({"step": f"Attempt {attempt} Success", "detail": "Query executed successfully."})
+            break
+            
+        return {
+            "sql": sql,
+            "result": result,
+            "error": error,
+            "audit_trail": audit_trail,
+            "attempts": attempt,
+            "relevant_columns": relevant_cols
+        }
