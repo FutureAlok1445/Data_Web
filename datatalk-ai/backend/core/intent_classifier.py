@@ -15,6 +15,8 @@ class IntentResult(BaseModel):
     aggregation_method: Optional[str] = None
     methodology: Optional[str] = None
     infographic: bool = False
+    expanded_queries: Optional[List[str]] = None
+    recommended_chart_type: Optional[str] = None
 
     @field_validator("intent")
     @classmethod
@@ -28,7 +30,8 @@ class IntentResult(BaseModel):
             "INDIVIDUAL_LOOKUP",
             "INFOGRAPHIC_REQUEST",
             "UNSUPPORTED",
-            "COLUMN_ANALYSIS" # Keep for backward compatibility
+            "COLUMN_ANALYSIS",
+            "VAGUE_QUERY"
         }
         v = v.upper().strip()
         if v not in valid:
@@ -40,10 +43,10 @@ class IntentResult(BaseModel):
 # Intent classifier
 # ---------------------------------------------------------------------------
 
-def classify_intent(user_query: str) -> IntentResult:
+def classify_intent(user_query: str, history: List[dict] = None) -> IntentResult:
     """
     Calls Gemini to classify the user query into a structured intent.
-    Falls back to a keyword heuristic if the API key is missing.
+    Incorporates session history for conversational context.
     """
     prompt_path = os.path.join(
         os.path.dirname(__file__), "..", "prompts", "intent_classification.txt"
@@ -55,6 +58,12 @@ def classify_intent(user_query: str) -> IntentResult:
         system_prompt = "Classify user analytics queries. Return JSON with intent."
 
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+
+    # Format history for context (just the last round to keep it snappy)
+    context_str = ""
+    if history and len(history) > 0:
+        last = history[-1]
+        context_str = f"Previous Interaction:\nUser: {last.get('query')}\nAssistant: {last.get('answer', '')[:200]}..."
 
     # ------------------------------------------------------------------
     # Keyword fallback (no API key required)
@@ -111,7 +120,7 @@ def classify_intent(user_query: str) -> IntentResult:
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel("gemini-1.5-flash")
 
-    full_prompt = f"{system_prompt}\n\nUser Query: {user_query}"
+    full_prompt = f"{system_prompt}\n\n{context_str}\n\nUser Query: {user_query}"
 
     try:
         response = model.generate_content(full_prompt)
@@ -129,7 +138,7 @@ def classify_intent(user_query: str) -> IntentResult:
     except Exception:
         # Safe fallback
         return IntentResult(
-            intent="GROUP_COMPARISON", # More flexible default
+            intent="GROUP_COMPARISON",
             target_columns=[],
             metric=None,
             aggregation_method="group-by",

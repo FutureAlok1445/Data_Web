@@ -55,10 +55,16 @@ def execute_with_retry(
                 
             # 3. Self-healing loop
             try:
+                # NEW: Contextual advice if column not found
+                col_advice = ""
+                if "column not found" in error_msg.lower():
+                    col_advice = f"\nNote: If the user asked for a column that doesn't exist, suggest the closest existing alternative from the schema: {list(schema.keys())}."
+
                 healing_prompt = (
                     f"The following DuckDB SQL query failed:\n```sql\n{sql}\n```\n\n"
                     f"Error Message: {error_msg}\n\n"
                     f"Schema Reference: {schema}\n\n"
+                    f"{col_advice}\n"
                     "Please provide the corrected SQL query to fix this error. Return ONLY the valid DuckDB SQL."
                 )
                 response = client.messages.create(
@@ -74,15 +80,22 @@ def execute_with_retry(
                 elif "```" in sql:
                     sql = sql.split("```")[1].split("```")[0].strip()
                     
-                audit_trail.append({"step": f"self_heal_{attempt + 1}", "new_sql": sql})
+                audit_trail.append({
+                    "step": f"self_heal_{attempt + 1}", 
+                    "new_sql": sql,
+                    "tip": "Suggested column correction" if col_advice else "Fixed syntax/logic"
+                })
                 
             except Exception as heal_e:
                 audit_trail.append({"step": f"self_heal_error_{attempt + 1}", "error": str(heal_e)})
                 break
                 
+    # If final attempt failed, and was column-related, provide a friendly suggestion
+    final_error = audit_trail[-1].get("error", "") if audit_trail else ""
     return {
         "success": False,
         "sql": sql,
         "error": "Max retries reached. Unable to fix query.",
+        "suggestion": f"I couldn't find some of the data you requested. Did you mean one of these: {list(schema.keys())[:5]}?" if "column" in str(final_error).lower() else None,
         "audit_trail": audit_trail
     }

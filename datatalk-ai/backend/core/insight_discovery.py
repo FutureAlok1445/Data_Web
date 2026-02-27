@@ -116,3 +116,61 @@ def calculate_correlations(data: pd.DataFrame, target_col: str = None) -> list:
         correlations.sort(key=lambda x: x["impact_score"], reverse=True)
         
     return correlations
+def perform_categorical_sweep(data: pd.DataFrame, target_col: str, metric_col: str = None) -> list:
+    """
+    Proactively checks all categorical columns for interesting segments/drivers.
+    Useful for 'Insight Generation Agent' to find additional relevant insights.
+    """
+    if data.empty: return []
+    
+    categorical_cols = data.select_dtypes(exclude=[np.number]).columns.tolist()
+    insights = []
+    
+    # If target is provided (e.g. Churn), prioritize it
+    # Else, if a metric col is provided (e.g. MonthlyCharges), use it as the benchmark
+    for col in categorical_cols:
+        if col == target_col or col == metric_col: continue
+        
+        try:
+            # Group by this categorical column and compute target/metric mean
+            if target_col and target_col in data.columns:
+                # If target is binary (like churn), compute rate
+                if data[target_col].nunique() == 2:
+                    # Map to 1/0 for math
+                    temp_y = data[target_col].map({data[target_col].unique()[0]: 0, data[target_col].unique()[1]: 1})
+                    group_stats = data.join(temp_y.rename('temp_target')).groupby(col)['temp_target'].agg(['mean', 'count'])
+                else:
+                    group_stats = data.groupby(col)[target_col].agg(['mean', 'count'])
+                    
+                global_mean = data[target_col].mean() if not (data[target_col].nunique() == 2) else data[target_col].map({data[target_col].unique()[0]: 0, data[target_col].unique()[1]: 1}).mean()
+            elif metric_col and metric_col in data.columns:
+                group_stats = data.groupby(col)[metric_col].agg(['mean', 'count'])
+                global_mean = data[metric_col].mean()
+            else:
+                continue
+
+            total_rows = len(data)
+            for group_name, stats in group_stats.iterrows():
+                # Filter out small segments
+                if stats['count'] < 5: continue
+                
+                diff = stats['mean'] - global_mean
+                magnitude = abs(diff) / global_mean if global_mean != 0 else 0
+                pop_pct = stats['count'] / total_rows
+                
+                impact = calculate_impact_score(magnitude, pop_pct, 0.01)
+                
+                if impact > 30: # Only keep meaningful ones
+                    insights.append({
+                        "dimension": col,
+                        "segment": str(group_name),
+                        "impact_score": impact,
+                        "insight_text": f"The segment '{group_name}' in {col} shows a {magnitude:.1%} difference from the average.",
+                        "magnitude": float(magnitude),
+                        "population_pct": float(pop_pct)
+                    })
+        except Exception:
+            continue
+            
+    insights.sort(key=lambda x: x["impact_score"], reverse=True)
+    return insights[:5]

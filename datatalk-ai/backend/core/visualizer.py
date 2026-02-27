@@ -5,42 +5,44 @@ import json
 from typing import Optional
 
 
-def _detect_chart_type(df: pd.DataFrame, intent: str) -> str:
-    """Heuristically decide the best chart type from the intent and dataframe shape."""
+def _detect_chart_type(df: pd.DataFrame, intent: str, recommended: str = None) -> str:
+    """Heuristically decide the best chart type, respecting LLM recommendations if valid."""
+    if recommended in ("bar_chart", "bar"):
+        return "bar"
+    if recommended in ("pie_chart", "pie"):
+        return "pie"
+    if recommended in ("line_chart", "line"):
+        return "line"
+    if recommended in ("metric_card", "card"):
+        return "card"
+    if recommended == "data_table":
+        return "table"
+
     numeric_cols = df.select_dtypes(include="number").columns.tolist()
     categorical_cols = df.select_dtypes(exclude="number").columns.tolist()
 
     if intent == "INDIVIDUAL_LOOKUP":
-        return "card"  # No chart needed for single record
-    if intent in ("GROUP_COMPARISON", "METRIC_CALCULATION") and categorical_cols and numeric_cols:
+        return "card"
+    if intent in ("GROUP_COMPARISON", "METRIC_CALCULATION", "CHURN_ANALYSIS") and categorical_cols and numeric_cols:
         return "bar"
-    if intent == "COLUMN_ANALYSIS":
-        if numeric_cols:
-            return "histogram"
+    if intent == "DISTRIBUTION" or intent == "COLUMN_ANALYSIS":
         if categorical_cols:
             return "pie"
-    if len(numeric_cols) >= 2 and not categorical_cols:
-        return "scatter"
-    if categorical_cols and numeric_cols:
-        return "bar"
+        if numeric_cols:
+            return "histogram"
     return "table"
 
 
-def build_chart(df: pd.DataFrame, intent: str, user_query: str) -> Optional[dict]:
+def build_chart(df: pd.DataFrame, intent: str, user_query: str, recommended_chart: str = None) -> Optional[dict]:
     """
     Deterministically build a Plotly chart from the result dataframe.
-
-    Returns a dict with:
-        - chart_type: str
-        - plotly_json: str  (JSON-serialised Plotly figure)
-    Returns None if a chart is not appropriate (e.g., single record lookup).
     """
     if df.empty:
         return None
 
     numeric_cols = df.select_dtypes(include="number").columns.tolist()
     categorical_cols = df.select_dtypes(exclude="number").columns.tolist()
-    chart_type = _detect_chart_type(df, intent)
+    chart_type = _detect_chart_type(df, intent, recommended_chart)
 
     fig = None
 
@@ -55,7 +57,7 @@ def build_chart(df: pd.DataFrame, intent: str, user_query: str) -> Optional[dict
                 color=categorical_cols[1] if len(categorical_cols) > 1 else None,
                 title=user_query.capitalize(),
                 color_discrete_sequence=px.colors.sequential.Blues_r,
-                text_auto=True,
+                text_auto='.2s',
             )
             fig.update_layout(
                 plot_bgcolor="rgba(0,0,0,0)",
@@ -71,11 +73,6 @@ def build_chart(df: pd.DataFrame, intent: str, user_query: str) -> Optional[dict
                 color_discrete_sequence=["#3b82f6"],
                 nbins=30,
             )
-            fig.update_layout(
-                plot_bgcolor="rgba(0,0,0,0)",
-                paper_bgcolor="rgba(0,0,0,0)",
-                font=dict(color="#1e293b"),
-            )
 
         elif chart_type == "pie" and categorical_cols and numeric_cols:
             fig = px.pie(
@@ -84,19 +81,17 @@ def build_chart(df: pd.DataFrame, intent: str, user_query: str) -> Optional[dict
                 values=numeric_cols[0],
                 title=user_query.capitalize(),
                 color_discrete_sequence=px.colors.sequential.Blues_r,
+                hole=0.4
             )
 
-        elif chart_type == "scatter" and len(numeric_cols) >= 2:
-            fig = px.scatter(
+        elif chart_type == "line" and categorical_cols and numeric_cols:
+            fig = px.line(
                 df,
-                x=numeric_cols[0],
-                y=numeric_cols[1],
+                x=categorical_cols[0],
+                y=numeric_cols[0],
                 title=user_query.capitalize(),
                 color_discrete_sequence=["#3b82f6"],
-            )
-            fig.update_layout(
-                plot_bgcolor="rgba(0,0,0,0)",
-                paper_bgcolor="rgba(0,0,0,0)",
+                markers=True
             )
 
         elif chart_type == "table" or fig is None:
