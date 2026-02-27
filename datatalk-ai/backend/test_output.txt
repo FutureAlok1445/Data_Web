@@ -1,0 +1,114 @@
+﻿python : Traceback (most recent call 
+last):
+At line:1 char:1
++ python test_query.py 2>&1 | Out-File 
+-Encoding utf8 test_output.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpeci 
+   fied: (Traceback (most recent call  
+   last)::String) [], RemoteExceptio   
+ n
+    + FullyQualifiedErrorId : NativeCo 
+   mmandError
+ 
+  File "C:\py project sem 4\Data_Web\da
+tatalk-ai\backend\test_query.py", line 
+37, in <module>
+    result = 
+validator.execute_with_retry("What is 
+the average tenure?")
+  File "C:\py project sem 4\Data_Web\da
+tatalk-ai\backend\core\validator.py", 
+line 21, in execute_with_retry
+    sql = 
+self.qe.generate_sql(question, 
+schema_context, previous_error=error, 
+previous_sql=sql)
+  File "C:\py project sem 4\Data_Web\da
+tatalk-ai\backend\core\query_engine.py"
+, line 57, in generate_sql
+    response = client.messages.create(
+        
+model="claude-3-5-sonnet-20241022",
+    ...<2 lines>...
+        messages=[{"role": "user", 
+"content": user_message}]
+    )
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\_utils\_utils.p
+y", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\resources\messa
+ges\messages.py", line 996, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<30 lines>...
+        stream_cls=Stream[RawMessageStr
+eamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\_base_client.py
+", line 1364, in post
+    return cast(ResponseT, 
+self.request(cast_to, opts, 
+stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\_base_client.py
+", line 1058, in request
+    request = 
+self._build_request(options, 
+retries_taken=retries_taken)
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\_base_client.py
+", line 521, in _build_request
+    headers = 
+self._build_headers(options, 
+retries_taken=retries_taken)
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\_base_client.py
+", line 451, in _build_headers
+    
+self._validate_headers(headers_dict, 
+custom_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shubham Pawaskar\AppDa
+ta\Local\Programs\Python\Python313\Lib\
+site-packages\anthropic\_client.py", 
+line 196, in _validate_headers
+    raise TypeError(
+        '"Could not resolve 
+authentication method. Expected either 
+api_key or auth_token to be set. Or 
+for one of the `X-Api-Key` or 
+`Authorization` headers to be 
+explicitly omitted"'
+    )
+TypeError: "Could not resolve 
+authentication method. Expected either 
+api_key or auth_token to be set. Or 
+for one of the `X-Api-Key` or 
+`Authorization` headers to be 
+explicitly omitted"
+Session: b5efa09d
+CSV path: C:\py project sem 4\Data_Web\datatalk-ai\backend\storage\uploads\b5efa09d_Telco Customer Churn.csv
+File exists: True
+Ingested OK: (7043, 21)
+Analyzer OK
+QueryEngine OK
+Validator OK

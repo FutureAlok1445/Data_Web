@@ -1,0 +1,3731 @@
+{
+  "c2585d9b-a434-41e3-a9b5-090352748727": {
+    "session_id": "c2585d9b-a434-41e3-a9b5-090352748727",
+    "original_filename": "sfc64-testset-2.csv",
+    "file_path": "C:\\Users\\RUDRANARAYAN\\OneDrive\\Desktop\\Web_Data\\Data_Web\\datatalk-ai\\backend\\routes\\..\\storage\\uploads\\c2585d9b-a434-41e3-a9b5-090352748727_sfc64-testset-2.csv",
+    "schema": {
+      "seed": "BIGINT",
+      "col_0x0": "VARCHAR"
+    },
+    "data_dictionary": "Mock Data Dictionary for schema:\nseed: BIGINT\ncol_0x0: VARCHAR",
+    "history": [
+      {
+        "success": true,
+        "query": "What is the churn rate by gender?",
+        "sql": "SELECT * FROM dataset LIMIT 5; -- Mock query for 'What is the churn rate by gender?'",
+        "answer": "Mock grounded answer: The data shows relevant findings for your query.",
+        "data": [
+          {
+            "seed": 0,
+            "col_0x0": " 0x91959e5fb96a6332"
+          },
+          {
+            "seed": 1,
+            "col_0x0": " 0x3c1dd8a25a7e9f21"
+          },
+          {
+            "seed": 2,
+            "col_0x0": " 0x657bdffc99798d9e"
+          },
+          {
+            "seed": 3,
+            "col_0x0": " 0x1a04de320b19e022"
+          },
+          {
+            "seed": 4,
+            "col_0x0": " 0x65b92af0e5f3c61c"
+          }
+        ],
+        "columns": [
+          "seed",
+          "col_0x0"
+        ],
+        "anomalies": {},
+        "insights": [],
+        "stats": {
+          "confidence_interval": {
+            "mean": 2.0,
+            "lower_bound": 0.036756838522442825,
+            "upper_bound": 3.963243161477557,
+            "confidence_level": 0.95
+          }
+        },
+        "executive_summary": {
+          "risk_level": "Medium",
+          "key_finding": "Actionable patterns detected in the mock dataset processing.",
+          "recommended_action": "Proceed with standard review and continuous monitoring."
+        },
+        "audit_trail": [
+          {
+            "step": "initial_generation",
+            "sql": "SELECT * FROM dataset LIMIT 5; -- Mock query for 'What is the churn rate by gender?'"
+          },
+          {
+            "step": "execution_attempt_1",
+            "status": "success"
+          }
+        ]
+      }
+    ]
+  },
+  "c9e72ee3": {
+    "session_id": "c9e72ee3",
+    "filename": "mt19937-testset-1.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\c9e72ee3_mt19937-testset-1.csv",
+    "uploaded_at": "2026-02-27T13:46:50.494417",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0xdeadbeaf": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0xc816921f",
+          "0xb3623c6d",
+          "0x5fa391bb",
+          "0x40178d9",
+          "0x7dcc9811"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": []
+  },
+  "336a66bc": {
+    "session_id": "336a66bc",
+    "filename": "mt19937-testset-1.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\336a66bc_mt19937-testset-1.csv",
+    "uploaded_at": "2026-02-27T13:49:11.731128",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0xdeadbeaf": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0xc816921f",
+          "0xb3623c6d",
+          "0x5fa391bb",
+          "0x40178d9",
+          "0x7dcc9811"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": []
+  },
+  "eb40c9d2": {
+    "session_id": "eb40c9d2",
+    "filename": "mt19937-testset-1.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\eb40c9d2_mt19937-testset-1.csv",
+    "uploaded_at": "2026-02-27T13:53:33.332072",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0xdeadbeaf": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0xc816921f",
+          "0xb3623c6d",
+          "0x5fa391bb",
+          "0x40178d9",
+          "0x7dcc9811"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": []
+  },
+  "6a9cf970": {
+    "session_id": "6a9cf970",
+    "filename": "mt19937-testset-2.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\6a9cf970_mt19937-testset-2.csv",
+    "uploaded_at": "2026-02-27T13:53:52.282534",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0x0": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0x7ab4ea94",
+          "0x9b561119",
+          "0x4957d02e",
+          "0x7dd3fdc2",
+          "0x5affe54"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": []
+  },
+  "65337c5b": {
+    "session_id": "65337c5b",
+    "filename": "mt19937-testset-2.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\65337c5b_mt19937-testset-2.csv",
+    "uploaded_at": "2026-02-27T13:54:21.329452",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0x0": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0x7ab4ea94",
+          "0x9b561119",
+          "0x4957d02e",
+          "0x7dd3fdc2",
+          "0x5affe54"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": []
+  },
+  "7e9ba08f": {
+    "session_id": "7e9ba08f",
+    "filename": "pcg64-testset-1.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\7e9ba08f_pcg64-testset-1.csv",
+    "uploaded_at": "2026-02-27T14:03:11.234398",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0xdeadbeaf": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0x60d24054e17a0698",
+          "0xd5e79d89856e4f12",
+          "0xd254972fe64bd782",
+          "0xf1e3072a53c72571",
+          "0xd7c1d7393d4115c9"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": []
+  },
+  "b5efa09d": {
+    "session_id": "b5efa09d",
+    "filename": "Telco Customer Churn.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\b5efa09d_Telco Customer Churn.csv",
+    "uploaded_at": "2026-02-27T14:09:38.563831",
+    "shape": {
+      "rows": 7043,
+      "columns": 21
+    },
+    "schema": {
+      "customerid": {
+        "null_count": 0,
+        "unique_count": 7043,
+        "type": "id"
+      },
+      "gender": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "categorical",
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "value_counts": {
+          "Male": 3555,
+          "Female": 3488
+        }
+      },
+      "seniorcitizen": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5901,
+          "Yes": 1142
+        }
+      },
+      "partner": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "No": 3641,
+          "Yes": 3402
+        }
+      },
+      "dependents": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 4933,
+          "Yes": 2110
+        }
+      },
+      "tenure": {
+        "null_count": 0,
+        "unique_count": 73,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 32.37,
+        "median": 29.0,
+        "std": 24.56
+      },
+      "phoneservice": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "Yes": 6361,
+          "No": 682
+        }
+      },
+      "multiplelines": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No phone service",
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 3390,
+          "Yes": 2971,
+          "No phone service": 682
+        }
+      },
+      "internetservice": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "DSL",
+          "Fiber optic",
+          "No"
+        ],
+        "value_counts": {
+          "Fiber optic": 3096,
+          "DSL": 2421,
+          "No": 1526
+        }
+      },
+      "onlinesecurity": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3498,
+          "Yes": 2019,
+          "No internet service": 1526
+        }
+      },
+      "onlinebackup": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Yes",
+          "No",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3088,
+          "Yes": 2429,
+          "No internet service": 1526
+        }
+      },
+      "deviceprotection": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3095,
+          "Yes": 2422,
+          "No internet service": 1526
+        }
+      },
+      "techsupport": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3473,
+          "Yes": 2044,
+          "No internet service": 1526
+        }
+      },
+      "streamingtv": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2810,
+          "Yes": 2707,
+          "No internet service": 1526
+        }
+      },
+      "streamingmovies": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2785,
+          "Yes": 2732,
+          "No internet service": 1526
+        }
+      },
+      "contract": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Month-to-month",
+          "One year",
+          "Two year"
+        ],
+        "value_counts": {
+          "Month-to-month": 3875,
+          "Two year": 1695,
+          "One year": 1473
+        }
+      },
+      "paperlessbilling": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "Yes": 4171,
+          "No": 2872
+        }
+      },
+      "paymentmethod": {
+        "null_count": 0,
+        "unique_count": 4,
+        "type": "categorical",
+        "unique_values": [
+          "Electronic check",
+          "Mailed check",
+          "Bank transfer (automatic)",
+          "Credit card (automatic)"
+        ],
+        "value_counts": {
+          "Electronic check": 2365,
+          "Mailed check": 1612,
+          "Bank transfer (automatic)": 1544,
+          "Credit card (automatic)": 1522
+        }
+      },
+      "monthlycharges": {
+        "null_count": 0,
+        "unique_count": 1585,
+        "type": "numeric",
+        "min": 18.25,
+        "max": 118.75,
+        "mean": 64.76,
+        "median": 70.35,
+        "std": 30.09
+      },
+      "totalcharges": {
+        "null_count": 0,
+        "unique_count": 6531,
+        "type": "text",
+        "sample_values": [
+          "29.85",
+          "1889.5",
+          "108.15",
+          "1840.75",
+          "151.65"
+        ]
+      },
+      "churn": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5174,
+          "Yes": 1869
+        }
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": "churn",
+    "impact_scores": [],
+    "query_history": []
+  },
+  "3cbaa458": {
+    "session_id": "3cbaa458",
+    "filename": "mt19937-testset-2.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\3cbaa458_mt19937-testset-2.csv",
+    "uploaded_at": "2026-02-27T14:14:49.072786",
+    "shape": {
+      "rows": 1000,
+      "columns": 2
+    },
+    "schema": {
+      "seed": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 999.0,
+        "mean": 499.5,
+        "median": 499.5,
+        "std": 288.82
+      },
+      "0x0": {
+        "null_count": 0,
+        "unique_count": 1000,
+        "type": "text",
+        "sample_values": [
+          "0x7ab4ea94",
+          "0x9b561119",
+          "0x4957d02e",
+          "0x7dd3fdc2",
+          "0x5affe54"
+        ]
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": null,
+    "impact_scores": [],
+    "query_history": [
+      {
+        "query_id": "6e4cfcce",
+        "timestamp": "2026-02-27T14:14:58.165261",
+        "user_question": "explain this",
+        "relevant_columns_used": [
+          "seed",
+          "0x0"
+        ],
+        "sql_executed": "SELECT * FROM main_data LIMIT 20",
+        "result": [
+          {
+            "seed": 0,
+            "0x0": "0x7ab4ea94"
+          },
+          {
+            "seed": 1,
+            "0x0": "0x9b561119"
+          },
+          {
+            "seed": 2,
+            "0x0": "0x4957d02e"
+          },
+          {
+            "seed": 3,
+            "0x0": "0x7dd3fdc2"
+          },
+          {
+            "seed": 4,
+            "0x0": "0x5affe54"
+          },
+          {
+            "seed": 5,
+            "0x0": "0x5a01741c"
+          },
+          {
+            "seed": 6,
+            "0x0": "0x8b9e8c1f"
+          },
+          {
+            "seed": 7,
+            "0x0": "0xda5bf11a"
+          },
+          {
+            "seed": 8,
+            "0x0": "0x509226"
+          },
+          {
+            "seed": 9,
+            "0x0": "0x64e2ea17"
+          },
+          {
+            "seed": 10,
+            "0x0": "0x82c6dab5"
+          },
+          {
+            "seed": 11,
+            "0x0": "0xe4302515"
+          },
+          {
+            "seed": 12,
+            "0x0": "0x8198b873"
+          },
+          {
+            "seed": 13,
+            "0x0": "0xc3ec9a82"
+          },
+          {
+            "seed": 14,
+            "0x0": "0x829dff28"
+          },
+          {
+            "seed": 15,
+            "0x0": "0x5278e44f"
+          },
+          {
+            "seed": 16,
+            "0x0": "0x994a7d2c"
+          },
+          {
+            "seed": 17,
+            "0x0": "0xf1c89398"
+          },
+          {
+            "seed": 18,
+            "0x0": "0xaf2fddec"
+          },
+          {
+            "seed": 19,
+            "0x0": "0x22abc6ee"
+          }
+        ],
+        "row_count": 20,
+        "answer": "Mock fallback answer based on local constraints.",
+        "chart_type": "bar",
+        "stats": null,
+        "anomalies": [],
+        "executive_summary": {
+          "risk_level": "Low",
+          "key_finding": "No significant API key found for finding generation.",
+          "recommended_action": "Enable API configurations."
+        },
+        "attempts": 1
+      },
+      {
+        "query_id": "83534c07",
+        "timestamp": "2026-02-27T14:16:55.696847",
+        "user_question": "What is the churn rate by gender?",
+        "relevant_columns_used": [
+          "seed",
+          "0x0"
+        ],
+        "sql_executed": "SELECT * FROM main_data LIMIT 20",
+        "result": [
+          {
+            "seed": 0,
+            "0x0": "0x7ab4ea94"
+          },
+          {
+            "seed": 1,
+            "0x0": "0x9b561119"
+          },
+          {
+            "seed": 2,
+            "0x0": "0x4957d02e"
+          },
+          {
+            "seed": 3,
+            "0x0": "0x7dd3fdc2"
+          },
+          {
+            "seed": 4,
+            "0x0": "0x5affe54"
+          },
+          {
+            "seed": 5,
+            "0x0": "0x5a01741c"
+          },
+          {
+            "seed": 6,
+            "0x0": "0x8b9e8c1f"
+          },
+          {
+            "seed": 7,
+            "0x0": "0xda5bf11a"
+          },
+          {
+            "seed": 8,
+            "0x0": "0x509226"
+          },
+          {
+            "seed": 9,
+            "0x0": "0x64e2ea17"
+          },
+          {
+            "seed": 10,
+            "0x0": "0x82c6dab5"
+          },
+          {
+            "seed": 11,
+            "0x0": "0xe4302515"
+          },
+          {
+            "seed": 12,
+            "0x0": "0x8198b873"
+          },
+          {
+            "seed": 13,
+            "0x0": "0xc3ec9a82"
+          },
+          {
+            "seed": 14,
+            "0x0": "0x829dff28"
+          },
+          {
+            "seed": 15,
+            "0x0": "0x5278e44f"
+          },
+          {
+            "seed": 16,
+            "0x0": "0x994a7d2c"
+          },
+          {
+            "seed": 17,
+            "0x0": "0xf1c89398"
+          },
+          {
+            "seed": 18,
+            "0x0": "0xaf2fddec"
+          },
+          {
+            "seed": 19,
+            "0x0": "0x22abc6ee"
+          }
+        ],
+        "row_count": 20,
+        "answer": "Mock fallback answer based on local constraints.",
+        "chart_type": "bar",
+        "stats": null,
+        "anomalies": [],
+        "executive_summary": {
+          "risk_level": "Low",
+          "key_finding": "No significant API key found for finding generation.",
+          "recommended_action": "Enable API configurations."
+        },
+        "attempts": 1
+      }
+    ]
+  },
+  "012b1980": {
+    "session_id": "012b1980",
+    "filename": "Telco Customer Churn.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\012b1980_Telco Customer Churn.csv",
+    "uploaded_at": "2026-02-27T14:20:21.774760",
+    "shape": {
+      "rows": 7043,
+      "columns": 21
+    },
+    "schema": {
+      "customerid": {
+        "null_count": 0,
+        "unique_count": 7043,
+        "type": "id"
+      },
+      "gender": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "categorical",
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "value_counts": {
+          "Male": 3555,
+          "Female": 3488
+        }
+      },
+      "seniorcitizen": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5901,
+          "Yes": 1142
+        }
+      },
+      "partner": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "No": 3641,
+          "Yes": 3402
+        }
+      },
+      "dependents": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 4933,
+          "Yes": 2110
+        }
+      },
+      "tenure": {
+        "null_count": 0,
+        "unique_count": 73,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 32.37,
+        "median": 29.0,
+        "std": 24.56
+      },
+      "phoneservice": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "Yes": 6361,
+          "No": 682
+        }
+      },
+      "multiplelines": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No phone service",
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 3390,
+          "Yes": 2971,
+          "No phone service": 682
+        }
+      },
+      "internetservice": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "DSL",
+          "Fiber optic",
+          "No"
+        ],
+        "value_counts": {
+          "Fiber optic": 3096,
+          "DSL": 2421,
+          "No": 1526
+        }
+      },
+      "onlinesecurity": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3498,
+          "Yes": 2019,
+          "No internet service": 1526
+        }
+      },
+      "onlinebackup": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Yes",
+          "No",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3088,
+          "Yes": 2429,
+          "No internet service": 1526
+        }
+      },
+      "deviceprotection": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3095,
+          "Yes": 2422,
+          "No internet service": 1526
+        }
+      },
+      "techsupport": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3473,
+          "Yes": 2044,
+          "No internet service": 1526
+        }
+      },
+      "streamingtv": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2810,
+          "Yes": 2707,
+          "No internet service": 1526
+        }
+      },
+      "streamingmovies": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2785,
+          "Yes": 2732,
+          "No internet service": 1526
+        }
+      },
+      "contract": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Month-to-month",
+          "One year",
+          "Two year"
+        ],
+        "value_counts": {
+          "Month-to-month": 3875,
+          "Two year": 1695,
+          "One year": 1473
+        }
+      },
+      "paperlessbilling": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "Yes": 4171,
+          "No": 2872
+        }
+      },
+      "paymentmethod": {
+        "null_count": 0,
+        "unique_count": 4,
+        "type": "categorical",
+        "unique_values": [
+          "Electronic check",
+          "Mailed check",
+          "Bank transfer (automatic)",
+          "Credit card (automatic)"
+        ],
+        "value_counts": {
+          "Electronic check": 2365,
+          "Mailed check": 1612,
+          "Bank transfer (automatic)": 1544,
+          "Credit card (automatic)": 1522
+        }
+      },
+      "monthlycharges": {
+        "null_count": 0,
+        "unique_count": 1585,
+        "type": "numeric",
+        "min": 18.25,
+        "max": 118.75,
+        "mean": 64.76,
+        "median": 70.35,
+        "std": 30.09
+      },
+      "totalcharges": {
+        "null_count": 0,
+        "unique_count": 6531,
+        "type": "text",
+        "sample_values": [
+          "29.85",
+          "1889.5",
+          "108.15",
+          "1840.75",
+          "151.65"
+        ]
+      },
+      "churn": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5174,
+          "Yes": 1869
+        }
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": "churn",
+    "impact_scores": [],
+    "query_history": []
+  },
+  "dbe5b5c2": {
+    "session_id": "dbe5b5c2",
+    "filename": "Telco Customer Churn.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\dbe5b5c2_Telco Customer Churn.csv",
+    "uploaded_at": "2026-02-27T14:21:27.637628",
+    "shape": {
+      "rows": 7043,
+      "columns": 21
+    },
+    "schema": {
+      "customerid": {
+        "null_count": 0,
+        "unique_count": 7043,
+        "type": "id"
+      },
+      "gender": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "categorical",
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "value_counts": {
+          "Male": 3555,
+          "Female": 3488
+        }
+      },
+      "seniorcitizen": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5901,
+          "Yes": 1142
+        }
+      },
+      "partner": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "No": 3641,
+          "Yes": 3402
+        }
+      },
+      "dependents": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 4933,
+          "Yes": 2110
+        }
+      },
+      "tenure": {
+        "null_count": 0,
+        "unique_count": 73,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 32.37,
+        "median": 29.0,
+        "std": 24.56
+      },
+      "phoneservice": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "Yes": 6361,
+          "No": 682
+        }
+      },
+      "multiplelines": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No phone service",
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 3390,
+          "Yes": 2971,
+          "No phone service": 682
+        }
+      },
+      "internetservice": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "DSL",
+          "Fiber optic",
+          "No"
+        ],
+        "value_counts": {
+          "Fiber optic": 3096,
+          "DSL": 2421,
+          "No": 1526
+        }
+      },
+      "onlinesecurity": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3498,
+          "Yes": 2019,
+          "No internet service": 1526
+        }
+      },
+      "onlinebackup": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Yes",
+          "No",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3088,
+          "Yes": 2429,
+          "No internet service": 1526
+        }
+      },
+      "deviceprotection": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3095,
+          "Yes": 2422,
+          "No internet service": 1526
+        }
+      },
+      "techsupport": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3473,
+          "Yes": 2044,
+          "No internet service": 1526
+        }
+      },
+      "streamingtv": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2810,
+          "Yes": 2707,
+          "No internet service": 1526
+        }
+      },
+      "streamingmovies": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2785,
+          "Yes": 2732,
+          "No internet service": 1526
+        }
+      },
+      "contract": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Month-to-month",
+          "One year",
+          "Two year"
+        ],
+        "value_counts": {
+          "Month-to-month": 3875,
+          "Two year": 1695,
+          "One year": 1473
+        }
+      },
+      "paperlessbilling": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "Yes": 4171,
+          "No": 2872
+        }
+      },
+      "paymentmethod": {
+        "null_count": 0,
+        "unique_count": 4,
+        "type": "categorical",
+        "unique_values": [
+          "Electronic check",
+          "Mailed check",
+          "Bank transfer (automatic)",
+          "Credit card (automatic)"
+        ],
+        "value_counts": {
+          "Electronic check": 2365,
+          "Mailed check": 1612,
+          "Bank transfer (automatic)": 1544,
+          "Credit card (automatic)": 1522
+        }
+      },
+      "monthlycharges": {
+        "null_count": 0,
+        "unique_count": 1585,
+        "type": "numeric",
+        "min": 18.25,
+        "max": 118.75,
+        "mean": 64.76,
+        "median": 70.35,
+        "std": 30.09
+      },
+      "totalcharges": {
+        "null_count": 0,
+        "unique_count": 6531,
+        "type": "text",
+        "sample_values": [
+          "29.85",
+          "1889.5",
+          "108.15",
+          "1840.75",
+          "151.65"
+        ]
+      },
+      "churn": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5174,
+          "Yes": 1869
+        }
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": "churn",
+    "impact_scores": [],
+    "query_history": [
+      {
+        "query_id": "da55f489",
+        "timestamp": "2026-02-27T14:21:43.303406",
+        "user_question": "Compare charges of churned vs non-churned customers",
+        "relevant_columns_used": [
+          "customerid",
+          "gender",
+          "seniorcitizen",
+          "partner",
+          "dependents",
+          "tenure",
+          "phoneservice",
+          "multiplelines",
+          "internetservice",
+          "onlinesecurity",
+          "onlinebackup",
+          "deviceprotection",
+          "techsupport",
+          "streamingtv",
+          "streamingmovies",
+          "contract",
+          "paperlessbilling",
+          "paymentmethod",
+          "monthlycharges",
+          "totalcharges",
+          "churn"
+        ],
+        "sql_executed": "SELECT * FROM main_data LIMIT 20",
+        "result": [
+          {
+            "customerid": "7590-VHVEG",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 1,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 29.85,
+            "totalcharges": "29.85",
+            "churn": "No"
+          },
+          {
+            "customerid": "5575-GNVDE",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 34,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 56.95,
+            "totalcharges": "1889.5",
+            "churn": "No"
+          },
+          {
+            "customerid": "3668-QPYBK",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 2,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 53.85,
+            "totalcharges": "108.15",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "7795-CFOCW",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 45,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 42.3,
+            "totalcharges": "1840.75",
+            "churn": "No"
+          },
+          {
+            "customerid": "9237-HQITU",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 2,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 70.7,
+            "totalcharges": "151.65",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "9305-CDSKC",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 8,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 99.65,
+            "totalcharges": "820.5",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "1452-KIOVK",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 22,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 89.1,
+            "totalcharges": "1949.4",
+            "churn": "No"
+          },
+          {
+            "customerid": "6713-OKOMC",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 10,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 29.75,
+            "totalcharges": "301.9",
+            "churn": "No"
+          },
+          {
+            "customerid": "7892-POOKP",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 28,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 104.8,
+            "totalcharges": "3046.05",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "6388-TABGU",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 62,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 56.15,
+            "totalcharges": "3487.95",
+            "churn": "No"
+          },
+          {
+            "customerid": "9763-GRSKD",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "Yes",
+            "tenure": 13,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 49.95,
+            "totalcharges": "587.45",
+            "churn": "No"
+          },
+          {
+            "customerid": "7469-LKBCI",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 16,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "No",
+            "onlinesecurity": "No internet service",
+            "onlinebackup": "No internet service",
+            "deviceprotection": "No internet service",
+            "techsupport": "No internet service",
+            "streamingtv": "No internet service",
+            "streamingmovies": "No internet service",
+            "contract": "Two year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 18.95,
+            "totalcharges": "326.8",
+            "churn": "No"
+          },
+          {
+            "customerid": "8091-TTVAX",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 58,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 100.35,
+            "totalcharges": "5681.1",
+            "churn": "No"
+          },
+          {
+            "customerid": "0280-XJGEX",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 49,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 103.7,
+            "totalcharges": "5036.3",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "5129-JLPIS",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 25,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 105.5,
+            "totalcharges": "2686.05",
+            "churn": "No"
+          },
+          {
+            "customerid": "3655-SNQYZ",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "Yes",
+            "tenure": 69,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Two year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 113.25,
+            "totalcharges": "7895.15",
+            "churn": "No"
+          },
+          {
+            "customerid": "8191-XWSZG",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 52,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "No",
+            "onlinesecurity": "No internet service",
+            "onlinebackup": "No internet service",
+            "deviceprotection": "No internet service",
+            "techsupport": "No internet service",
+            "streamingtv": "No internet service",
+            "streamingmovies": "No internet service",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 20.65,
+            "totalcharges": "1022.95",
+            "churn": "No"
+          },
+          {
+            "customerid": "9959-WOFKT",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 71,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Two year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 106.7,
+            "totalcharges": "7382.25",
+            "churn": "No"
+          },
+          {
+            "customerid": "4190-MFLUW",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "Yes",
+            "tenure": 10,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 55.2,
+            "totalcharges": "528.35",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "4183-MYFRB",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 21,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 90.05,
+            "totalcharges": "1862.9",
+            "churn": "No"
+          }
+        ],
+        "row_count": 20,
+        "answer": "Mock fallback answer based on local constraints.",
+        "chart_type": "scatter",
+        "stats": {
+          "test_type": "Chi-Square Test (Categorical Independence)",
+          "p_value": 0.3946,
+          "significant": false
+        },
+        "anomalies": [],
+        "executive_summary": {
+          "risk_level": "Low",
+          "key_finding": "No significant API key found for finding generation.",
+          "recommended_action": "Enable API configurations."
+        },
+        "attempts": 1
+      }
+    ]
+  },
+  "8db99b8a": {
+    "session_id": "8db99b8a",
+    "filename": "Telco Customer Churn.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\8db99b8a_Telco Customer Churn.csv",
+    "uploaded_at": "2026-02-27T14:22:07.151059",
+    "shape": {
+      "rows": 7043,
+      "columns": 21
+    },
+    "schema": {
+      "customerid": {
+        "null_count": 0,
+        "unique_count": 7043,
+        "type": "id"
+      },
+      "gender": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "categorical",
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "value_counts": {
+          "Male": 3555,
+          "Female": 3488
+        }
+      },
+      "seniorcitizen": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5901,
+          "Yes": 1142
+        }
+      },
+      "partner": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "No": 3641,
+          "Yes": 3402
+        }
+      },
+      "dependents": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 4933,
+          "Yes": 2110
+        }
+      },
+      "tenure": {
+        "null_count": 0,
+        "unique_count": 73,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 32.37,
+        "median": 29.0,
+        "std": 24.56
+      },
+      "phoneservice": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "Yes": 6361,
+          "No": 682
+        }
+      },
+      "multiplelines": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No phone service",
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 3390,
+          "Yes": 2971,
+          "No phone service": 682
+        }
+      },
+      "internetservice": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "DSL",
+          "Fiber optic",
+          "No"
+        ],
+        "value_counts": {
+          "Fiber optic": 3096,
+          "DSL": 2421,
+          "No": 1526
+        }
+      },
+      "onlinesecurity": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3498,
+          "Yes": 2019,
+          "No internet service": 1526
+        }
+      },
+      "onlinebackup": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Yes",
+          "No",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3088,
+          "Yes": 2429,
+          "No internet service": 1526
+        }
+      },
+      "deviceprotection": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3095,
+          "Yes": 2422,
+          "No internet service": 1526
+        }
+      },
+      "techsupport": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3473,
+          "Yes": 2044,
+          "No internet service": 1526
+        }
+      },
+      "streamingtv": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2810,
+          "Yes": 2707,
+          "No internet service": 1526
+        }
+      },
+      "streamingmovies": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2785,
+          "Yes": 2732,
+          "No internet service": 1526
+        }
+      },
+      "contract": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Month-to-month",
+          "One year",
+          "Two year"
+        ],
+        "value_counts": {
+          "Month-to-month": 3875,
+          "Two year": 1695,
+          "One year": 1473
+        }
+      },
+      "paperlessbilling": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "Yes": 4171,
+          "No": 2872
+        }
+      },
+      "paymentmethod": {
+        "null_count": 0,
+        "unique_count": 4,
+        "type": "categorical",
+        "unique_values": [
+          "Electronic check",
+          "Mailed check",
+          "Bank transfer (automatic)",
+          "Credit card (automatic)"
+        ],
+        "value_counts": {
+          "Electronic check": 2365,
+          "Mailed check": 1612,
+          "Bank transfer (automatic)": 1544,
+          "Credit card (automatic)": 1522
+        }
+      },
+      "monthlycharges": {
+        "null_count": 0,
+        "unique_count": 1585,
+        "type": "numeric",
+        "min": 18.25,
+        "max": 118.75,
+        "mean": 64.76,
+        "median": 70.35,
+        "std": 30.09
+      },
+      "totalcharges": {
+        "null_count": 0,
+        "unique_count": 6531,
+        "type": "text",
+        "sample_values": [
+          "29.85",
+          "1889.5",
+          "108.15",
+          "1840.75",
+          "151.65"
+        ]
+      },
+      "churn": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5174,
+          "Yes": 1869
+        }
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": "churn",
+    "impact_scores": [],
+    "query_history": [
+      {
+        "query_id": "546d5f8a",
+        "timestamp": "2026-02-27T14:22:24.013391",
+        "user_question": "explain churn charges",
+        "relevant_columns_used": [
+          "customerid",
+          "gender",
+          "seniorcitizen",
+          "partner",
+          "dependents",
+          "tenure",
+          "phoneservice",
+          "multiplelines",
+          "internetservice",
+          "onlinesecurity",
+          "onlinebackup",
+          "deviceprotection",
+          "techsupport",
+          "streamingtv",
+          "streamingmovies",
+          "contract",
+          "paperlessbilling",
+          "paymentmethod",
+          "monthlycharges",
+          "totalcharges",
+          "churn"
+        ],
+        "sql_executed": "SELECT * FROM main_data LIMIT 20",
+        "result": [
+          {
+            "customerid": "7590-VHVEG",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 1,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 29.85,
+            "totalcharges": "29.85",
+            "churn": "No"
+          },
+          {
+            "customerid": "5575-GNVDE",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 34,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 56.95,
+            "totalcharges": "1889.5",
+            "churn": "No"
+          },
+          {
+            "customerid": "3668-QPYBK",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 2,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 53.85,
+            "totalcharges": "108.15",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "7795-CFOCW",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 45,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 42.3,
+            "totalcharges": "1840.75",
+            "churn": "No"
+          },
+          {
+            "customerid": "9237-HQITU",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 2,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 70.7,
+            "totalcharges": "151.65",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "9305-CDSKC",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 8,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 99.65,
+            "totalcharges": "820.5",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "1452-KIOVK",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 22,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 89.1,
+            "totalcharges": "1949.4",
+            "churn": "No"
+          },
+          {
+            "customerid": "6713-OKOMC",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 10,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 29.75,
+            "totalcharges": "301.9",
+            "churn": "No"
+          },
+          {
+            "customerid": "7892-POOKP",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 28,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 104.8,
+            "totalcharges": "3046.05",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "6388-TABGU",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 62,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 56.15,
+            "totalcharges": "3487.95",
+            "churn": "No"
+          },
+          {
+            "customerid": "9763-GRSKD",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "Yes",
+            "tenure": 13,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 49.95,
+            "totalcharges": "587.45",
+            "churn": "No"
+          },
+          {
+            "customerid": "7469-LKBCI",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 16,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "No",
+            "onlinesecurity": "No internet service",
+            "onlinebackup": "No internet service",
+            "deviceprotection": "No internet service",
+            "techsupport": "No internet service",
+            "streamingtv": "No internet service",
+            "streamingmovies": "No internet service",
+            "contract": "Two year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 18.95,
+            "totalcharges": "326.8",
+            "churn": "No"
+          },
+          {
+            "customerid": "8091-TTVAX",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 58,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 100.35,
+            "totalcharges": "5681.1",
+            "churn": "No"
+          },
+          {
+            "customerid": "0280-XJGEX",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 49,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 103.7,
+            "totalcharges": "5036.3",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "5129-JLPIS",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 25,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 105.5,
+            "totalcharges": "2686.05",
+            "churn": "No"
+          },
+          {
+            "customerid": "3655-SNQYZ",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "Yes",
+            "tenure": 69,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Two year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 113.25,
+            "totalcharges": "7895.15",
+            "churn": "No"
+          },
+          {
+            "customerid": "8191-XWSZG",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 52,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "No",
+            "onlinesecurity": "No internet service",
+            "onlinebackup": "No internet service",
+            "deviceprotection": "No internet service",
+            "techsupport": "No internet service",
+            "streamingtv": "No internet service",
+            "streamingmovies": "No internet service",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 20.65,
+            "totalcharges": "1022.95",
+            "churn": "No"
+          },
+          {
+            "customerid": "9959-WOFKT",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 71,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Two year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 106.7,
+            "totalcharges": "7382.25",
+            "churn": "No"
+          },
+          {
+            "customerid": "4190-MFLUW",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "Yes",
+            "tenure": 10,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "No",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 55.2,
+            "totalcharges": "528.35",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "4183-MYFRB",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 21,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 90.05,
+            "totalcharges": "1862.9",
+            "churn": "No"
+          }
+        ],
+        "row_count": 20,
+        "answer": "Mock fallback answer based on local constraints.",
+        "chart_type": "bar",
+        "stats": {
+          "test_type": "Chi-Square Test (Categorical Independence)",
+          "p_value": 0.3946,
+          "significant": false
+        },
+        "anomalies": [],
+        "executive_summary": {
+          "risk_level": "Low",
+          "key_finding": "No significant API key found for finding generation.",
+          "recommended_action": "Enable API configurations."
+        },
+        "attempts": 1
+      }
+    ]
+  },
+  "836ba2c8": {
+    "session_id": "836ba2c8",
+    "filename": "Telco Customer Churn.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\836ba2c8_Telco Customer Churn.csv",
+    "uploaded_at": "2026-02-27T14:24:59.890327",
+    "shape": {
+      "rows": 7043,
+      "columns": 21
+    },
+    "schema": {
+      "customerid": {
+        "null_count": 0,
+        "unique_count": 7043,
+        "type": "id"
+      },
+      "gender": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "categorical",
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "value_counts": {
+          "Male": 3555,
+          "Female": 3488
+        }
+      },
+      "seniorcitizen": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5901,
+          "Yes": 1142
+        }
+      },
+      "partner": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "No": 3641,
+          "Yes": 3402
+        }
+      },
+      "dependents": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 4933,
+          "Yes": 2110
+        }
+      },
+      "tenure": {
+        "null_count": 0,
+        "unique_count": 73,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 32.37,
+        "median": 29.0,
+        "std": 24.56
+      },
+      "phoneservice": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "Yes": 6361,
+          "No": 682
+        }
+      },
+      "multiplelines": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No phone service",
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 3390,
+          "Yes": 2971,
+          "No phone service": 682
+        }
+      },
+      "internetservice": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "DSL",
+          "Fiber optic",
+          "No"
+        ],
+        "value_counts": {
+          "Fiber optic": 3096,
+          "DSL": 2421,
+          "No": 1526
+        }
+      },
+      "onlinesecurity": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3498,
+          "Yes": 2019,
+          "No internet service": 1526
+        }
+      },
+      "onlinebackup": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Yes",
+          "No",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3088,
+          "Yes": 2429,
+          "No internet service": 1526
+        }
+      },
+      "deviceprotection": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3095,
+          "Yes": 2422,
+          "No internet service": 1526
+        }
+      },
+      "techsupport": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3473,
+          "Yes": 2044,
+          "No internet service": 1526
+        }
+      },
+      "streamingtv": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2810,
+          "Yes": 2707,
+          "No internet service": 1526
+        }
+      },
+      "streamingmovies": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2785,
+          "Yes": 2732,
+          "No internet service": 1526
+        }
+      },
+      "contract": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Month-to-month",
+          "One year",
+          "Two year"
+        ],
+        "value_counts": {
+          "Month-to-month": 3875,
+          "Two year": 1695,
+          "One year": 1473
+        }
+      },
+      "paperlessbilling": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "Yes": 4171,
+          "No": 2872
+        }
+      },
+      "paymentmethod": {
+        "null_count": 0,
+        "unique_count": 4,
+        "type": "categorical",
+        "unique_values": [
+          "Electronic check",
+          "Mailed check",
+          "Bank transfer (automatic)",
+          "Credit card (automatic)"
+        ],
+        "value_counts": {
+          "Electronic check": 2365,
+          "Mailed check": 1612,
+          "Bank transfer (automatic)": 1544,
+          "Credit card (automatic)": 1522
+        }
+      },
+      "monthlycharges": {
+        "null_count": 0,
+        "unique_count": 1585,
+        "type": "numeric",
+        "min": 18.25,
+        "max": 118.75,
+        "mean": 64.76,
+        "median": 70.35,
+        "std": 30.09
+      },
+      "totalcharges": {
+        "null_count": 0,
+        "unique_count": 6531,
+        "type": "text",
+        "sample_values": [
+          "29.85",
+          "1889.5",
+          "108.15",
+          "1840.75",
+          "151.65"
+        ]
+      },
+      "churn": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5174,
+          "Yes": 1869
+        }
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": "churn",
+    "impact_scores": [],
+    "query_history": [
+      {
+        "query_id": "360c9844",
+        "timestamp": "2026-02-27T14:25:05.845935",
+        "user_question": "Show average monthly charges by contract type",
+        "relevant_columns_used": [
+          "customerid",
+          "gender",
+          "seniorcitizen",
+          "partner",
+          "dependents",
+          "tenure",
+          "phoneservice",
+          "multiplelines",
+          "internetservice",
+          "onlinesecurity",
+          "onlinebackup",
+          "deviceprotection",
+          "techsupport",
+          "streamingtv",
+          "streamingmovies",
+          "contract",
+          "paperlessbilling",
+          "paymentmethod",
+          "monthlycharges",
+          "totalcharges",
+          "churn"
+        ],
+        "sql_executed": "SELECT \"contract\", AVG(\"tenure\") as result FROM main_data GROUP BY \"contract\" ORDER BY result DESC",
+        "result": [
+          {
+            "contract": "Two year",
+            "result": 56.74
+          },
+          {
+            "contract": "One year",
+            "result": 42.04
+          },
+          {
+            "contract": "Month-to-month",
+            "result": 18.04
+          }
+        ],
+        "row_count": 3,
+        "answer": "Mock fallback answer based on local constraints.",
+        "chart_type": "line",
+        "stats": null,
+        "anomalies": [],
+        "executive_summary": {
+          "risk_level": "Low",
+          "key_finding": "No significant API key found for finding generation.",
+          "recommended_action": "Enable API configurations."
+        },
+        "attempts": 1
+      }
+    ]
+  },
+  "ad0be49f": {
+    "session_id": "ad0be49f",
+    "filename": "Telco Customer Churn.csv",
+    "saved_path": "C:\\py project sem 4\\Data_Web\\datatalk-ai\\backend\\storage\\uploads\\ad0be49f_Telco Customer Churn.csv",
+    "uploaded_at": "2026-02-27T14:29:18.373269",
+    "shape": {
+      "rows": 7043,
+      "columns": 21
+    },
+    "schema": {
+      "customerid": {
+        "null_count": 0,
+        "unique_count": 7043,
+        "type": "id"
+      },
+      "gender": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "categorical",
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "value_counts": {
+          "Male": 3555,
+          "Female": 3488
+        }
+      },
+      "seniorcitizen": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5901,
+          "Yes": 1142
+        }
+      },
+      "partner": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "No": 3641,
+          "Yes": 3402
+        }
+      },
+      "dependents": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 4933,
+          "Yes": 2110
+        }
+      },
+      "tenure": {
+        "null_count": 0,
+        "unique_count": 73,
+        "type": "numeric",
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 32.37,
+        "median": 29.0,
+        "std": 24.56
+      },
+      "phoneservice": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "Yes": 6361,
+          "No": 682
+        }
+      },
+      "multiplelines": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No phone service",
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 3390,
+          "Yes": 2971,
+          "No phone service": 682
+        }
+      },
+      "internetservice": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "DSL",
+          "Fiber optic",
+          "No"
+        ],
+        "value_counts": {
+          "Fiber optic": 3096,
+          "DSL": 2421,
+          "No": 1526
+        }
+      },
+      "onlinesecurity": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3498,
+          "Yes": 2019,
+          "No internet service": 1526
+        }
+      },
+      "onlinebackup": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Yes",
+          "No",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3088,
+          "Yes": 2429,
+          "No internet service": 1526
+        }
+      },
+      "deviceprotection": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3095,
+          "Yes": 2422,
+          "No internet service": 1526
+        }
+      },
+      "techsupport": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 3473,
+          "Yes": 2044,
+          "No internet service": 1526
+        }
+      },
+      "streamingtv": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2810,
+          "Yes": 2707,
+          "No internet service": 1526
+        }
+      },
+      "streamingmovies": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "No",
+          "Yes",
+          "No internet service"
+        ],
+        "value_counts": {
+          "No": 2785,
+          "Yes": 2732,
+          "No internet service": 1526
+        }
+      },
+      "contract": {
+        "null_count": 0,
+        "unique_count": 3,
+        "type": "categorical",
+        "unique_values": [
+          "Month-to-month",
+          "One year",
+          "Two year"
+        ],
+        "value_counts": {
+          "Month-to-month": 3875,
+          "Two year": 1695,
+          "One year": 1473
+        }
+      },
+      "paperlessbilling": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "Yes",
+          "No"
+        ],
+        "value_counts": {
+          "Yes": 4171,
+          "No": 2872
+        }
+      },
+      "paymentmethod": {
+        "null_count": 0,
+        "unique_count": 4,
+        "type": "categorical",
+        "unique_values": [
+          "Electronic check",
+          "Mailed check",
+          "Bank transfer (automatic)",
+          "Credit card (automatic)"
+        ],
+        "value_counts": {
+          "Electronic check": 2365,
+          "Mailed check": 1612,
+          "Bank transfer (automatic)": 1544,
+          "Credit card (automatic)": 1522
+        }
+      },
+      "monthlycharges": {
+        "null_count": 0,
+        "unique_count": 1585,
+        "type": "numeric",
+        "min": 18.25,
+        "max": 118.75,
+        "mean": 64.76,
+        "median": 70.35,
+        "std": 30.09
+      },
+      "totalcharges": {
+        "null_count": 0,
+        "unique_count": 6531,
+        "type": "text",
+        "sample_values": [
+          "29.85",
+          "1889.5",
+          "108.15",
+          "1840.75",
+          "151.65"
+        ]
+      },
+      "churn": {
+        "null_count": 0,
+        "unique_count": 2,
+        "type": "boolean",
+        "unique_values": [
+          "No",
+          "Yes"
+        ],
+        "value_counts": {
+          "No": 5174,
+          "Yes": 1869
+        }
+      }
+    },
+    "data_dictionary": {
+      "mock": {
+        "description": "Mock Data Dictionary",
+        "data_type_category": "categorical"
+      }
+    },
+    "target_column": "churn",
+    "impact_scores": [],
+    "query_history": [
+      {
+        "query_id": "7feee57a",
+        "timestamp": "2026-02-27T14:29:18.426572",
+        "user_question": "Give me a complete overview: What is the overall churn rate, and how does it vary by the top categorical features?",
+        "relevant_columns_used": [
+          "customerid",
+          "gender",
+          "seniorcitizen",
+          "partner",
+          "dependents",
+          "tenure",
+          "phoneservice",
+          "multiplelines",
+          "internetservice",
+          "onlinesecurity",
+          "onlinebackup",
+          "deviceprotection",
+          "techsupport",
+          "streamingtv",
+          "streamingmovies",
+          "contract",
+          "paperlessbilling",
+          "paymentmethod",
+          "monthlycharges",
+          "totalcharges",
+          "churn"
+        ],
+        "sql_executed": "SELECT * FROM main_data LIMIT 10",
+        "result": [
+          {
+            "customerid": "7590-VHVEG",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 1,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 29.85,
+            "totalcharges": "29.85",
+            "churn": "No"
+          },
+          {
+            "customerid": "5575-GNVDE",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 34,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 56.95,
+            "totalcharges": "1889.5",
+            "churn": "No"
+          },
+          {
+            "customerid": "3668-QPYBK",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 2,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 53.85,
+            "totalcharges": "108.15",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "7795-CFOCW",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 45,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 42.3,
+            "totalcharges": "1840.75",
+            "churn": "No"
+          },
+          {
+            "customerid": "9237-HQITU",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 2,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 70.7,
+            "totalcharges": "151.65",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "9305-CDSKC",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 8,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 99.65,
+            "totalcharges": "820.5",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "1452-KIOVK",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 22,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "Yes",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Credit card (automatic)",
+            "monthlycharges": 89.1,
+            "totalcharges": "1949.4",
+            "churn": "No"
+          },
+          {
+            "customerid": "6713-OKOMC",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "No",
+            "tenure": 10,
+            "phoneservice": "No",
+            "multiplelines": "No phone service",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "No",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "Month-to-month",
+            "paperlessbilling": "No",
+            "paymentmethod": "Mailed check",
+            "monthlycharges": 29.75,
+            "totalcharges": "301.9",
+            "churn": "No"
+          },
+          {
+            "customerid": "7892-POOKP",
+            "gender": "Female",
+            "seniorcitizen": "No",
+            "partner": "Yes",
+            "dependents": "No",
+            "tenure": 28,
+            "phoneservice": "Yes",
+            "multiplelines": "Yes",
+            "internetservice": "Fiber optic",
+            "onlinesecurity": "No",
+            "onlinebackup": "No",
+            "deviceprotection": "Yes",
+            "techsupport": "Yes",
+            "streamingtv": "Yes",
+            "streamingmovies": "Yes",
+            "contract": "Month-to-month",
+            "paperlessbilling": "Yes",
+            "paymentmethod": "Electronic check",
+            "monthlycharges": 104.8,
+            "totalcharges": "3046.05",
+            "churn": "Yes"
+          },
+          {
+            "customerid": "6388-TABGU",
+            "gender": "Male",
+            "seniorcitizen": "No",
+            "partner": "No",
+            "dependents": "Yes",
+            "tenure": 62,
+            "phoneservice": "Yes",
+            "multiplelines": "No",
+            "internetservice": "DSL",
+            "onlinesecurity": "Yes",
+            "onlinebackup": "Yes",
+            "deviceprotection": "No",
+            "techsupport": "No",
+            "streamingtv": "No",
+            "streamingmovies": "No",
+            "contract": "One year",
+            "paperlessbilling": "No",
+            "paymentmethod": "Bank transfer (automatic)",
+            "monthlycharges": 56.15,
+            "totalcharges": "3487.95",
+            "churn": "No"
+          }
+        ],
+        "row_count": 10,
+        "answer": "Mock fallback answer based on local constraints.",
+        "chart_type": "bar",
+        "stats": {
+          "test_type": "Chi-Square Test (Categorical Independence)",
+          "p_value": 0.3505,
+          "significant": false
+        },
+        "anomalies": [],
+        "executive_summary": {
+          "risk_level": "Low",
+          "key_finding": "No significant API key found for finding generation.",
+          "recommended_action": "Enable API configurations."
+        },
+        "attempts": 1
+      }
+    ]
+  }
+}

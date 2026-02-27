@@ -1,11 +1,12 @@
 export type ColumnRole = 'dimension' | 'measure' | 'time' | 'id';
 
-export function detectColumnRoles(schema: Record<string, string>, dataSample: any[] = []): Record<string, ColumnRole> {
+export function detectColumnRoles(schema: Record<string, any>, dataSample: any[] = []): Record<string, ColumnRole> {
     const roles: Record<string, ColumnRole> = {};
 
-    for (const [col, type] of Object.entries(schema)) {
+    for (const [col, info] of Object.entries(schema)) {
         const colLower = col.toLowerCase();
-        const typeLower = type.toLowerCase();
+        const typeStr = typeof info === 'string' ? info : (info?.type || 'unknown');
+        const typeLower = typeStr.toLowerCase();
 
         // Check ID first
         if (colLower.includes('id') || colLower.endsWith('_id') || colLower === 'uuid') {

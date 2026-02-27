@@ -8,3 +8,6 @@ scipy
 anthropic
 python-dotenv
 fpdf2
+plotly
+numpy
+kaleido

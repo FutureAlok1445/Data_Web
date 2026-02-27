@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #FAFBFD;
+    --foreground: #1e293b;
+    --panel: #ffffff;
+    --border: #e5e7eb;
+    --muted: #64748b;
+  }
+
+  .dark {
+    --background: #020617;
+    /* Very dark slate, almost black */
+    --foreground: #f8fafc;
+    --panel: rgba(15, 23, 42, 0.65);
+    /* Translucent Slate 900 for Glassmorphism */
+    --border: rgba(51, 65, 85, 0.4);
+    /* Subtle Slate 700 border */
+    --muted: #94a3b8;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .border-soft {
+    @apply border border-border;
+  }
+}
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-300;
+}
+
+/* ── Animate-in Utilities (Tailwind-style) ── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn95 {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.slide-in-from-bottom-2 {
+  animation: slideInFromBottom 0.4s ease-out;
+}
+
+.slide-in-from-right-4 {
+  animation: slideInFromRight 0.5s ease-out;
+}
+
+.slide-in-from-top-4 {
+  animation: slideInFromTop 0.5s ease-out;
+}
+
+.zoom-in-95 {
+  animation: zoomIn95 0.5s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* ── Plotly Chart Overrides ── */
+.js-plotly-plot .plotly .modebar {
+  display: none !important;
+}
+
+.js-plotly-plot {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: inherit;
+}
+
+/* ── Custom Webkit Scrollbar ── */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.3);
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes slideInFromRight8 {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.slide-in-from-right-8 {
+  animation: slideInFromRight8 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.duration-700 {
+  animation-duration: 0.7s;
+}
+
+.duration-500 {
+  animation-duration: 0.5s;
+}
+
+.delay-150 {
+  animation-delay: 0.15s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}

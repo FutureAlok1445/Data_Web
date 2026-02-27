@@ -1,45 +1,52 @@
-import duckdb
+import json
 import os
-import anthropic
+from pathlib import Path
 
-def profile_schema(conn: duckdb.DuckDBPyConnection, table_name: str = "dataset") -> dict:
-    """Profiles the schema by fetching column names and types from DuckDB."""
-    query = f"DESCRIBE {table_name}"
-    result = conn.execute(query).fetchall()
-    schema = {}
-    for row in result:
-        col_name = row[0]
-        col_type = row[1]
-        schema[col_name] = col_type
-    return schema
-
-def get_data_dictionary(schema: dict) -> str:
-    """
-    Generates an AI data dictionary using Anthropic.
-    Reads system prompt from backend/prompts/data_dictionary.txt.
-    """
-    prompt_path = os.path.join(os.path.dirname(__file__), '..', 'prompts', 'data_dictionary.txt')
-    try:
-        with open(prompt_path, 'r', encoding='utf-8') as f:
-            system_prompt = f.read()
-    except FileNotFoundError:
-        system_prompt = "You are a data dictionary generator."
-        
+def _get_client():
     api_key = os.getenv("ANTHROPIC_API_KEY")
-    schema_str = "\n".join([f"{k}: {v}" for k, v in schema.items()])
-    
     if not api_key:
-        return f"Mock Data Dictionary for schema:\n{schema_str}"
+        return None
+    import anthropic
+    return anthropic.Anthropic()
+
+PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "data_dictionary.txt"
+
+class SchemaAnalyzer:
+    def __init__(self, schema):
+        self.schema = schema
+        self.data_dictionary = {}
+
+    def generate_data_dictionary(self):
+        try:
+            prompt = PROMPT_PATH.read_text()
+        except Exception:
+            prompt = "Generate a data dictionary."
         
-    client = anthropic.Anthropic(api_key=api_key)
-    
-    try:
-        response = client.messages.create(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=1000,
-            system=system_prompt,
-            messages=[{"role": "user", "content": f"Generate a data dictionary for this schema:\n{schema_str}"}]
-        )
-        return response.content[0].text
-    except Exception as e:
-        return f"Failed to generate data dictionary: {str(e)}"
+        # Only run if API key exists
+        if not os.getenv("ANTHROPIC_API_KEY"):
+            self.data_dictionary = {"mock": {"description": "Mock Data Dictionary", "data_type_category": "categorical"}}
+            return self.data_dictionary
+            
+        schema_context = json.dumps(self.schema, indent=2)
+        try:
+            response = _get_client().messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=1000,
+                system=prompt,
+                messages=[{"role": "user", "content": schema_context}]
+            )
+            text = response.content[0].text.strip()
+            text = text.replace("```json", "").replace("```", "").strip()
+            self.data_dictionary = json.loads(text)
+        except Exception as e:
+            self.data_dictionary = {"error": str(e)}
+        return self.data_dictionary
+
+    def generate_sample_questions(self, target_col):
+        if not target_col:
+            return ["Show me a summary of the data."]
+        return [
+            f"What is the average {target_col}?",
+            f"Show me the distribution of {target_col}.",
+            f"How does {target_col} correlate with other features?"
+        ]
