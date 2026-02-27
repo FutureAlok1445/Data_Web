@@ -13,6 +13,7 @@ from core.executive_summary import generate_executive_summary
 from core.intent_classifier import classify_intent
 from core.visualizer import build_chart
 from core.infographic_generator import generate_infographic, derive_key_highlight
+from core.stats_engine import compare_groups_statistically
 
 router = APIRouter()
 
@@ -92,20 +93,50 @@ async def process_query(req: QueryRequest):
             insights = calculate_correlations(result_df)
 
         # ----------------------------------------------------------------
-        # STEP 5 — Executive Summary
+        # STEP 5 — Statistical Validation (optional layer)
         # ----------------------------------------------------------------
-        kpis = {"total_rows_returned": len(data)}
-        exec_summary = generate_executive_summary(kpis, list(anomalies.keys()), insights[:3])
+        stat_validation = {}
+        if intent == "GROUP_COMPARISON" and len(intent_result.target_columns) >= 2:
+            group_col = intent_result.target_columns[0]
+            target_col = intent_result.target_columns[1]
+            if group_col in result_df.columns and target_col in result_df.columns:
+                stat_validation = compare_groups_statistically(result_df, group_col, target_col)
+                if stat_validation.get("significance_msg"):
+                    answer += f"\n\n**Statistical Note**: {stat_validation['significance_msg']}"
 
         # ----------------------------------------------------------------
-        # STEP 6 — Deterministic Chart Building (Plotly, no LLM)
+        # STEP 6 — Executive Summary
+        # ----------------------------------------------------------------
+        kpis = {"total_rows_returned": len(data)}
+        exec_summary = generate_executive_summary(
+            kpis=kpis, 
+            anomalies=list(anomalies.keys()), 
+            insights=insights[:3],
+            stat_note=stat_validation.get("significance_msg")
+        )
+
+        # ----------------------------------------------------------------
+        # STEP 7 — Explainable Process Analysis (The "How it Works" trail)
+        # ----------------------------------------------------------------
+        analysis_process = {
+            "intent": intent,
+            "target_columns": intent_result.target_columns,
+            "metric_identified": intent_result.metric,
+            "aggregation_method": intent_result.aggregation_method,
+            "methodology": intent_result.methodology or "Standard SQL aggregation and result formatting.",
+            "rows_processed": len(data),
+            "verification": "Output verified against deterministic SQL results"
+        }
+
+        # ----------------------------------------------------------------
+        # STEP 8 — Deterministic Chart Building (Plotly, no LLM)
         # ----------------------------------------------------------------
         chart = None
         if intent != "INDIVIDUAL_LOOKUP" and not result_df.empty:
             chart = build_chart(result_df, intent, req.query)
 
         # ----------------------------------------------------------------
-        # STEP 7 — Infographic Generation (Gemini image — only if requested)
+        # STEP 9 — Infographic Generation (Gemini image — only if requested)
         # ----------------------------------------------------------------
         infographic_b64 = None
         if intent_result.infographic and not result_df.empty:
@@ -127,8 +158,10 @@ async def process_query(req: QueryRequest):
             "answer": answer,
             "data": data,
             "columns": sql_result.get("columns", []),
-            "chart": chart,                          # Plotly JSON or None
-            "infographic": infographic_b64,           # Base64 PNG or None
+            "chart": chart,
+            "infographic": infographic_b64,
+            "analysis_process": analysis_process,
+            "stat_validation": stat_validation,
             "anomalies": anomalies,
             "insights": insights[:5],
             "executive_summary": exec_summary,

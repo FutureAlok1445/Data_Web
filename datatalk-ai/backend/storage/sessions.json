@@ -1,0 +1,34 @@
+{
+    "test-session-123": {
+        "session_id": "test-session-123",
+        "original_filename": "telco_churn.csv",
+        "file_path": "d:\\GenAI\\datatalk-ai\\backend\\storage\\uploads\\telco_churn.csv",
+        "schema": {
+            "customerID": "VARCHAR",
+            "gender": "VARCHAR",
+            "SeniorCitizen": "BIGINT",
+            "Partner": "VARCHAR",
+            "Dependents": "VARCHAR",
+            "tenure": "BIGINT",
+            "PhoneService": "VARCHAR",
+            "MultipleLines": "VARCHAR",
+            "InternetService": "VARCHAR",
+            "OnlineSecurity": "VARCHAR",
+            "OnlineBackup": "VARCHAR",
+            "DeviceProtection": "VARCHAR",
+            "TechSupport": "VARCHAR",
+            "StreamingTV": "VARCHAR",
+            "StreamingMovies": "VARCHAR",
+            "Contract": "VARCHAR",
+            "PaperlessBilling": "VARCHAR",
+            "PaymentMethod": "VARCHAR",
+            "MonthlyCharges": "DOUBLE",
+            "TotalCharges": "DOUBLE",
+            "Churn": "VARCHAR"
+        },
+        "data_dictionary": "A dataset of customer churn records including demographics, services, and charges.",
+        "data_health": {},
+        "top_drivers": [],
+        "history": []
+    }
+}

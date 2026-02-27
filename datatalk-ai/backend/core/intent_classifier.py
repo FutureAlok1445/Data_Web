@@ -12,18 +12,23 @@ class IntentResult(BaseModel):
     intent: str
     target_columns: List[str] = []
     metric: Optional[str] = None
+    aggregation_method: Optional[str] = None
+    methodology: Optional[str] = None
     infographic: bool = False
 
     @field_validator("intent")
     @classmethod
     def validate_intent(cls, v: str) -> str:
         valid = {
-            "COLUMN_ANALYSIS",
+            "CHURN_ANALYSIS",
             "GROUP_COMPARISON",
+            "TREND_ANALYSIS",
+            "DISTRIBUTION",
             "METRIC_CALCULATION",
             "INDIVIDUAL_LOOKUP",
             "INFOGRAPHIC_REQUEST",
             "UNSUPPORTED",
+            "COLUMN_ANALYSIS" # Keep for backward compatibility
         }
         v = v.upper().strip()
         if v not in valid:
@@ -60,18 +65,45 @@ def classify_intent(user_query: str) -> IntentResult:
             kw in query_lower
             for kw in ["infographic", "poster", "image", "visual summary"]
         )
+        
+        # Default results
         intent = "UNSUPPORTED"
+        agg = None
+        method = None
+        metric = None
+
         if infographic:
             intent = "INFOGRAPHIC_REQUEST"
+        elif "churn" in query_lower:
+            intent = "CHURN_ANALYSIS"
+            agg = "group-by"
+            metric = "rate"
+            method = "Calculating ratio of churned customers to total population."
         elif any(kw in query_lower for kw in ["customer", "id", "individual", "specific"]):
             intent = "INDIVIDUAL_LOOKUP"
+            agg = "filtering"
+            method = "Retrieving detailed record matching unique identifier."
         elif any(kw in query_lower for kw in ["compare", "versus", "vs", "between", "by gender", "by contract", "by payment"]):
             intent = "GROUP_COMPARISON"
-        elif any(kw in query_lower for kw in ["rate", "average", "total", "count", "sum", "percentage", "churn rate"]):
+            agg = "group-by"
+            method = "Segmenting metrics across specified category dimensions."
+        elif any(kw in query_lower for kw in ["rate", "average", "total", "count", "sum", "percentage"]):
             intent = "METRIC_CALCULATION"
-        elif any(kw in query_lower for kw in ["distribution", "analysis", "analytics", "breakdown"]):
-            intent = "COLUMN_ANALYSIS"
-        return IntentResult(intent=intent, target_columns=[], metric=None, infographic=infographic)
+            agg = "summation" if "sum" in query_lower else "averaging"
+            method = "Performing aggregate computation on target numeric column."
+        elif any(kw in query_lower for kw in ["distribution", "breakdown"]):
+            intent = "DISTRIBUTION"
+            agg = "group-by"
+            method = "Calculating frequency of unique values within column."
+            
+        return IntentResult(
+            intent=intent, 
+            target_columns=[], 
+            metric=metric, 
+            aggregation_method=agg,
+            methodology=method,
+            infographic=infographic
+        )
 
     # ------------------------------------------------------------------
     # Gemini call
@@ -95,10 +127,12 @@ def classify_intent(user_query: str) -> IntentResult:
         return IntentResult(**parsed)
 
     except Exception:
-        # Safe fallback — treat as generic column analysis
+        # Safe fallback
         return IntentResult(
-            intent="COLUMN_ANALYSIS",
+            intent="GROUP_COMPARISON", # More flexible default
             target_columns=[],
             metric=None,
+            aggregation_method="group-by",
+            methodology="Attempting segmented analysis on provided query.",
             infographic=False,
         )

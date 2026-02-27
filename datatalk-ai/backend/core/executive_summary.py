@@ -2,59 +2,39 @@ import os
 import anthropic
 import json
 
-def generate_executive_summary(kpis: dict, anomalies: dict, insights: list) -> dict:
+def generate_executive_summary(kpis: dict, anomalies: list, insights: list, stat_note: str = None) -> str:
     """
-    Generates a risk level and recommendation based on the data findings.
-    Calls Claude 3.5 Sonnet to synthesize the results into an executive summary.
+    Generates a high-level executive summary based on findings.
+    Uses Anthropic for the CDO-style synthesis (Business Impact Layer).
     """
     prompt_path = os.path.join(os.path.dirname(__file__), '..', 'prompts', 'executive_summary.txt')
     try:
         with open(prompt_path, 'r', encoding='utf-8') as f:
             system_prompt = f.read()
     except FileNotFoundError:
-        system_prompt = (
-            "You are a Chief Data Officer. Based on the provided KPIs, anomalies, and insights, "
-            "provide strictly a valid JSON object with three keys: 'risk_level' (Low, Medium, or High), "
-            "'key_finding' (1 concise sentence), and 'recommended_action' (1 concise sentence)."
-        )
+        system_prompt = "You are a Chief Data Officer. Summarize these results with clear business takeaways."
         
     api_key = os.getenv("ANTHROPIC_API_KEY")
+    
+    # Enrich findings for the prompt
+    findings = {
+        "kpis": kpis,
+        "anomalies_detected": anomalies,
+        "key_insights": insights,
+        "statistical_validation": stat_note
+    }
+    
     if not api_key:
-        return {
-            "risk_level": "Medium",
-            "key_finding": "Actionable patterns detected in the mock dataset processing.",
-            "recommended_action": "Proceed with standard review and continuous monitoring."
-        }
+        return f"Executive Summary (Mock): Found {len(anomalies)} anomalies and {len(insights)} insights. {stat_note if stat_note else ''}"
         
     client = anthropic.Anthropic(api_key=api_key)
-    
-    # Truncate context to keep prompt manageable
-    insights_str = str(insights)[:3000]
-    
-    context = (
-        f"KPIs: {kpis}\n\n"
-        f"Anomalies: {anomalies}\n\n"
-        f"Insights Highlights: {insights_str}"
-    )
-    
     try:
         response = client.messages.create(
             model="claude-3-5-sonnet-20241022",
-            max_tokens=300,
+            max_tokens=500,
             system=system_prompt,
-            messages=[{"role": "user", "content": context}]
+            messages=[{"role": "user", "content": f"Summarize these findings and provide business takeaways (Risk, Priority, Recommendations):\n{json.dumps(findings, indent=2)}"}]
         )
-        content = response.content[0].text.strip()
-        
-        if "```json" in content:
-            content = content.split("```json")[1].split("```")[0].strip()
-        elif "```" in content:
-            content = content.split("```")[1].split("```")[0].strip()
-            
-        return json.loads(content)
+        return response.content[0].text.strip()
     except Exception as e:
-        return {
-            "risk_level": "Unknown",
-            "key_finding": f"Error synthesizing executive summary. Diagnostics: {str(e)}",
-            "recommended_action": "Verify data consistency and API connectivity."
-        }
+        return f"Executive Summary: Analytics pipeline executed but summary generation failed. ({str(e)})"

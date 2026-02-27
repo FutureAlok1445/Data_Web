@@ -3,8 +3,10 @@ import os
 import uuid
 import json
 import shutil
+import pandas as pd
 from core.ingestion import ingest_csv_to_duckdb
-from core.schema_analyzer import profile_schema, get_data_dictionary
+from core.schema_analyzer import profile_schema, get_data_dictionary, profile_data_health
+from core.insight_discovery import find_top_drivers
 
 router = APIRouter()
 
@@ -41,12 +43,20 @@ async def upload_dataset(file: UploadFile = File(...)):
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
             
-        # Analyze schema immediately upon upload to store in session
+        # Analyze schema and profile data health immediately upon upload
         conn, cleaned_columns = ingest_csv_to_duckdb(file_path)
         schema = profile_schema(conn)
-        data_dict = get_data_dictionary(schema)
         
-        # We don't need to keep DuckDB connection open for now
+        # Load into pandas for deep profiling
+        df = pd.read_csv(file_path)
+        df.columns = cleaned_columns
+        data_health = profile_data_health(df)
+        
+        # Discover top drivers (if a target is inferred or global insights)
+        target = data_health.get("inferred_target")
+        top_drivers = find_top_drivers(df, target) if target else []
+        
+        data_dict = get_data_dictionary(schema)
         conn.close()
         
         # Save session info to JSON registry
@@ -57,6 +67,8 @@ async def upload_dataset(file: UploadFile = File(...)):
             "file_path": file_path,
             "schema": schema,
             "data_dictionary": data_dict,
+            "data_health": data_health,
+            "top_drivers": top_drivers,
             "history": []
         }
         safe_write_sessions(sessions)
