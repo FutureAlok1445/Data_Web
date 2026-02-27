@@ -5,7 +5,7 @@ router = APIRouter()
 
 @router.get("/{session_id}")
 async def get_session(session_id: str):
-    sessions = safe_read_sessions()
+    sessions = load_sessions()
     session = sessions.get(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")

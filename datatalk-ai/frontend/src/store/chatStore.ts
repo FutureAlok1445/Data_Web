@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export interface Message {
     id: string;
@@ -17,21 +18,30 @@ interface ChatState {
     clearMessages: () => void;
 }
 
-export const useChatStore = create<ChatState>((set) => ({
-    messages: [],
-    isLoading: false,
+export const useChatStore = create<ChatState>()(
+    persist(
+        (set) => ({
+            messages: [],
+            isLoading: false,
 
-    addMessage: (msg) =>
-        set((state) => ({ messages: [...state.messages, msg] })),
+            addMessage: (msg) =>
+                set((state) => ({ messages: [...state.messages, msg] })),
 
-    updateMessage: (id, payload) =>
-        set((state) => ({
-            messages: state.messages.map((m) => m.id === id ? { ...m, ...payload } : m)
-        })),
+            updateMessage: (id, payload) =>
+                set((state) => ({
+                    messages: state.messages.map((m) => m.id === id ? { ...m, ...payload } : m)
+                })),
 
-    setLoading: (loading) =>
-        set({ isLoading: loading }),
+            setLoading: (loading) =>
+                set({ isLoading: loading }),
 
-    clearMessages: () =>
-        set({ messages: [] }),
-}));
+            clearMessages: () =>
+                set({ messages: [], isLoading: false }),
+        }),
+        {
+            name: 'datatalk-chat', // localStorage key
+            // Don't persist loading state
+            partialize: (state) => ({ messages: state.messages }),
+        }
+    )
+);

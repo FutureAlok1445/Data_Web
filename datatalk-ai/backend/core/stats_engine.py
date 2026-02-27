@@ -1,6 +1,6 @@
 import pandas as pd
-from scipy import stats
 import numpy as np
+from scipy import stats
 
 def _get_significance_msg(p_val: float) -> str:
     """Returns a standardized significance message based on p-value."""

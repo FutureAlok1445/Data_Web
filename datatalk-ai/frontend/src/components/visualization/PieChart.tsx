@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Plot from 'react-plotly.js';
 
 interface PieChartProps {
@@ -7,11 +7,11 @@ interface PieChartProps {
     valueCol: string;
 }
 
-export const PieChart: React.FC<PieChartProps> = ({ data, labelCol, valueCol }) => {
-    const labels = data.map(d => String(d[labelCol]));
-    const values = data.map(d => Number(d[valueCol]) || 0);
+export const PieChart: React.FC<PieChartProps> = ({ data, labelCol, valueCol }: PieChartProps) => {
+    const labels = data.map((d: any) => String(d[labelCol]));
+    const values = data.map((d: any) => Number(d[valueCol]) || 0);
 
-    const total = values.reduce((a, b) => a + b, 0);
+    const total = values.reduce((a: number, b: number) => a + b, 0);
 
     return (
         <div className="w-full h-80 flex justify-center animate-in fade-in zoom-in-95 duration-500">

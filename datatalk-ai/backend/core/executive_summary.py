@@ -1,6 +1,6 @@
-import os
-import anthropic
 import json
+import os
+from pathlib import Path
 
 def generate_executive_summary(kpis: dict, anomalies: list, insights: list, stat_note: str = None) -> str:
     """

@@ -1,4 +1,3 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException
 import os
 import uuid
 import json
@@ -10,24 +9,17 @@ from core.insight_discovery import find_top_drivers
 
 router = APIRouter()
 
-STORAGE_DIR = os.path.join(os.path.dirname(__file__), '..', 'storage')
-UPLOADS_DIR = os.path.join(STORAGE_DIR, 'uploads')
-SESSIONS_FILE = os.path.join(STORAGE_DIR, 'sessions.json')
+UPLOAD_DIR = Path(__file__).parent.parent / "storage" / "uploads"
+SESSIONS_FILE = Path(__file__).parent.parent / "storage" / "sessions.json"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-os.makedirs(UPLOADS_DIR, exist_ok=True)
 
-def safe_read_sessions():
-    if os.path.exists(SESSIONS_FILE):
-        try:
-            with open(SESSIONS_FILE, 'r') as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            return {}
+def load_sessions() -> dict:
+    if SESSIONS_FILE.exists():
+        with open(SESSIONS_FILE) as f:
+            return json.load(f)
     return {}
 
-def safe_write_sessions(data):
-    with open(SESSIONS_FILE, 'w') as f:
-        json.dump(data, f, indent=4)
 
 @router.post("/")
 async def upload_dataset(file: UploadFile = File(...)):
@@ -71,15 +63,5 @@ async def upload_dataset(file: UploadFile = File(...)):
             "top_drivers": top_drivers,
             "history": []
         }
-        safe_write_sessions(sessions)
-        
-        return {
-            "session_id": session_id, 
-            "message": "File uploaded and profiled successfully",
-            "schema": schema
-        }
-    except Exception as e:
-        # Cleanup on failure
-        if os.path.exists(file_path):
-            os.remove(file_path)
-        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
+
+    return ACTIVE_SESSIONS[session_id]

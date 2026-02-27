@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from scipy import stats
 
 def calculate_impact_score(correlation_score: float, population_pct: float, p_value: float = 0.05) -> float:
     """

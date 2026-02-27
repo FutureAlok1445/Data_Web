@@ -5,7 +5,7 @@ export const apiClient = {
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch(`${API_URL}/upload/`, {
+        const response = await fetch(`${API_URL}/upload`, {
             method: 'POST',
             body: formData,
         });
@@ -24,7 +24,7 @@ export const apiClient = {
     },
 
     async processQuery(sessionId: string, query: string) {
-        const response = await fetch(`${API_URL}/query/`, {
+        const response = await fetch(`${API_URL}/query`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ session_id: sessionId, query }),

@@ -1,4 +1,4 @@
-import duckdb
+import json
 import os
 import anthropic
 import pandas as pd
@@ -60,10 +60,23 @@ def get_data_dictionary(schema: dict) -> str:
         system_prompt = "You are a data dictionary generator."
         
     api_key = os.getenv("ANTHROPIC_API_KEY")
-    schema_str = "\n".join([f"{k}: {v}" for k, v in schema.items()])
-    
     if not api_key:
-        return f"Mock Data Dictionary for schema:\n{schema_str}"
+        return None
+    import anthropic
+    return anthropic.Anthropic()
+
+PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "data_dictionary.txt"
+
+class SchemaAnalyzer:
+    def __init__(self, schema):
+        self.schema = schema
+        self.data_dictionary = {}
+
+    def generate_data_dictionary(self):
+        try:
+            prompt = PROMPT_PATH.read_text()
+        except Exception:
+            prompt = "Generate a data dictionary."
         
     client = anthropic.Anthropic(api_key=api_key)
     try:

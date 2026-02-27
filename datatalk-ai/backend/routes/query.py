@@ -1,3 +1,5 @@
+import uuid
+from datetime import datetime
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 import duckdb
@@ -49,9 +51,10 @@ def explain_chart(user_query: str, chart_type: str, data: list) -> str:
 
 router = APIRouter()
 
-class QueryRequest(BaseModel):
-    session_id: str
-    query: str
+stats_engine = StatsEngine()
+anomaly_detector = AnomalyDetector()
+answer_grounder = AnswerGrounder()
+exec_engine = ExecutiveSummaryEngine()
 
 async def _execute_sub_query(conn, req: QueryRequest, session: dict) -> dict:
     """
