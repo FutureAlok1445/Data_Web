@@ -8,3 +8,5 @@ scipy
 anthropic
 python-dotenv
 fpdf2
+plotly
+google-generativeai

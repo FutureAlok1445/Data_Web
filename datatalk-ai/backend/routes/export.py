@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response, JSONResponse
 import pandas as pd
-from .upload import safe_read_sessions
+from routes.upload import safe_read_sessions
 
 router = APIRouter()
 

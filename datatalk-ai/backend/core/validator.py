@@ -1,5 +1,5 @@
 import duckdb
-from .query_engine import generate_sql
+from core.query_engine import generate_sql
 import anthropic
 import os
 

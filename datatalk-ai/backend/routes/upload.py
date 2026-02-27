@@ -3,8 +3,8 @@ import os
 import uuid
 import json
 import shutil
-from ..core.ingestion import ingest_csv_to_duckdb
-from ..core.schema_analyzer import profile_schema, get_data_dictionary
+from core.ingestion import ingest_csv_to_duckdb
+from core.schema_analyzer import profile_schema, get_data_dictionary
 
 router = APIRouter()
 

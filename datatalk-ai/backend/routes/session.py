@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from .upload import safe_read_sessions
+from routes.upload import safe_read_sessions
 
 router = APIRouter()
 
